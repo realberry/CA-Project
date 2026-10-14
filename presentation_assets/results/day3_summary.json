@@ -1,0 +1,17 @@
+{
+  "tokens_total": 100000,
+  "tokens_profile": 50000,
+  "tokens_evaluation": 50000,
+  "temporal_overlap": 0.724485367683842,
+  "temporal_recall": 0.362242683841921,
+  "random_overlap": 0.5,
+  "spatial_recall": 0.4153348387096774,
+  "static_top2_recall": 0.2687406451612903,
+  "random_top2_recall": 0.25,
+  "cct_union_recall": 0.5803538709677419,
+  "cct_union_candidates": 3.372363870967742,
+  "mean_cramers_v": 0.14434331264287992,
+  "trace_partial_sha256": "4cb79ab27c967d008878981859f5883243c5890556fbaf4c85afc60f2797c6fe",
+  "source_lfs_sha256": "55c76a34adf54510ad0f64a161236da93fdc742ca8eecbbe776f21f8d7e0d1cd",
+  "source_byte_range": "0-25165823"
+}

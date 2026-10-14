@@ -1,0 +1,14 @@
+stage,metric,value,unit,comparison_or_context
+Day 1,Duplex GPU-tagged operations,96,operations,Working GPU path
+Day 1,Duplex Logic-tagged operations,320,operations,Working Logic-PIM path
+Day 2,GPU-resident expert execution,6.554,ms,Mean of 7 decode samples
+Day 2,Off-chip-case expert execution,7.570,ms,Mean of 7 decode samples
+Day 2,Off-chip expert loading,48.774,ms,Mean of 7 decode samples
+Day 2,No-prefetch expert path,56.344,ms,Load plus execution
+Day 2,Loading to execution ratio,6.44,x,48.774 / 7.570
+Day 2,Loading share of expert path,86.6,percent,Memory-wall contribution
+Day 3,Consecutive-token overlap,0.724,experts,Random expectation 0.500
+Day 3,Temporal HT recall,36.2,percent,Random expectation 25.0%
+Day 3,Spatial CCT top-2 recall,41.5,percent,Random expectation 25.0%
+Day 3,Frequency-only top-2 recall,26.9,percent,Held-out baseline
+Day 3,CCT union recall,58.0,percent,3.37 candidates on average

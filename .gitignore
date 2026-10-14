@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.ssh_agent/
+results/ssh_diag/
+mid_submission/zip_staging/
+mid_submission/*.zip
+mid_submission/report_template/*.docx
+mid_submission/report_template/*.pdf
+*.tmp
+*.part.tmp
