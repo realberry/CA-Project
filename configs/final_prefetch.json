@@ -1,6 +1,7 @@
 {
   "trace": "data/day3/c4_results.first24MiB.jsonl.part",
   "output_directory": "results/final_day1",
+  "energy_raw_directory": "results/day2/raw",
   "profile_tokens": 50000,
   "evaluation_tokens": 50000,
   "layers": 32,

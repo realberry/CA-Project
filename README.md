@@ -1,26 +1,39 @@
-# The MoE Memory Wall — Mid-Project Submission
+# The MoE Memory Wall — Complete Simulation Artifact
 
 > **GitHub repository:** <https://github.com/realberry/CA-Project>
 
 ## Executive summary
 
-This submission documents the work completed for the mid-project evaluation.
-The primary conclusion at this stage is deliberately limited: **when Mixtral
-expert weights are placed in modeled off-chip CPU DRAM, fetching the selected
-experts becomes a clear performance bottleneck**.
+This repository contains the mid-evaluation evidence and the completed final
+simulation. The final calibration uses one modeled H100, batch size 1, FP16,
+unsharded experts, and a 450 GB/s CPU-DRAM-to-HBM link. Expert loading takes
+50.115 ms, compared with 7.775 ms of off-chip-case expert execution, producing
+a 58.866 ms no-prefetch decoder step.
 
-The measured expert-weight loading time is 48.774 ms, while the corresponding
-GPU expert execution time is 7.570 ms. Loading is therefore 6.44 times longer
-than execution and contributes 86.6% of the 56.344 ms no-prefetch expert path.
-This verifies the memory-wall problem that motivates the remainder of the
-project.
+The selected training-free design uses a cross-layer correlation table (CCT)
+and one 336 MiB next-layer HBM buffer slot. On 50,000 held-out Mixtral routing
+tokens, it reduces exposed expert-loading stalls to 46.541 ms and total modeled
+decoder latency to 55.292 ms: a 1.065× speedup with 8.38% additional transfer
+traffic. Prediction statistics use a disjoint 50,000-token profile split.
 
-The submission also includes the correlation characterization requested for
-the mid evaluation. Real Mixtral routing decisions show above-random temporal
-and adjacent-layer structure. These measurements are preliminary evidence that
-prediction may be possible; they are not evidence of a completed prefetcher.
-No end-to-end prefetch speedup, stall reduction, traffic overhead, or energy
-saving is claimed in this submission.
+Dynamic energy increases by 6.01% because incorrect prefetches move additional
+bytes. When stalled-GPU power is included, the design breaks even at 56.7 W;
+at the explicitly labeled 350 W sensitivity point it saves 5.01% total energy.
+This is a simulation result, not a physical-GPU measurement.
+
+### Final-result reproduction
+
+```bash
+python3 scripts/analyze_single_gpu.py
+python3 scripts/simulate_prefetch.py \
+  --config configs/final_prefetch_single_gpu_batch1.json
+python3 scripts/analyze_prefetch_sensitivity.py \
+  --config configs/final_prefetch_single_gpu_batch1.json
+```
+
+The complete final method, tables, energy boundary, and VM commands are in
+`docs/FINAL_DAY2_RESULTS.md`. Historical sections below retain the original
+mid-evaluation methodology and evidence.
 
 ## 1. Project objective
 
@@ -30,10 +43,12 @@ to keep in fast GPU memory. If expert weights are stored in slower off-chip
 memory, every routing decision can trigger a large weight transfer before the
 selected expert can execute.
 
-The mid-project work answers two questions:
+The complete project answers four questions:
 
 1. Does loading selected experts dominate their GPU computation?
 2. Are future expert requests predictable from earlier layers or tokens?
+3. How much exposed loading can a bounded training-free prefetcher hide?
+4. What traffic and energy costs accompany incorrect prefetches?
 
 The work uses LLMSimulator, its Ramulator 2.0 integration, and the
 SSD-offloading extension. All hardware results are simulation results; no
@@ -48,9 +63,11 @@ physical GPU is required.
 | Measure and explain loading versus execution | Measured separate GPU-compute and expert-weight-copy runs and combined matched samples into a no-prefetch critical path. | `results/day2/summary.csv`, Day 2 plot |
 | Analyze temporal and spatial expert correlation | Analyzed 100,000 real Mixtral routes with separate 50,000-token profile and evaluation sets. | `DAY3_NOTES.md`, Day 3 plot |
 
-All four items listed for the mid evaluation have supporting artifacts.
-Predictor-integrated simulator prefetching, end-to-end stall reduction, traffic
-overhead, and energy savings belong to the final-project stage.
+All four items listed for the mid evaluation have supporting artifacts. The
+final-stage predictor, bounded next-layer prefetch buffer, stall accounting,
+traffic overhead, energy sensitivity, and single-GPU calibration are under
+`configs/final_*`, `scripts/*prefetch*`, `results/final_day*`, and
+`docs/FINAL_DAY2_RESULTS.md`.
 
 ## 3. Software and experiment provenance
 
@@ -587,31 +604,42 @@ Project/
 ├── results/day1/                   # Build, logs, status, and simulator output
 ├── results/day2/                   # Raw latency CSVs, summary, and plot
 ├── results/day3/                   # Correlation metrics and plot
+├── results/final_day1/             # Initial predictor/prefetch comparison
+├── results/final_day2/             # Single-GPU runs, sensitivity, and energy
+├── configs/final_day2_single_gpu_batch1/
+│                                     # Final LLMSimulator configurations
 └── mid_submission/
     └── presentation_assets/        # Curated files for making presentation slides
 ```
 
-## 9. Mid-evaluation conclusions
+## 9. Final-evaluation conclusions
 
 1. The provided Duplex simulator works with GPU, Logic-PIM, and detailed
    Ramulator memory timing.
-2. Moving unsharded experts to off-chip DRAM creates a clear memory bottleneck:
-   48.774 ms loading versus 7.570 ms execution.
-3. Preliminary routing analysis shows above-random temporal and adjacent-layer
-   correlation. This motivates testing a training-free prefetcher during the
-   final-project stage.
-4. No prefetcher has yet been integrated into the simulator, so no end-to-end
-   performance or energy improvement is claimed.
+2. The final one-GPU, batch-1 calibration confirms the memory wall: 50.115 ms
+   of expert loading versus 7.775 ms of expert execution.
+3. CCT provides the strongest fixed top-2 predictor, but a one-candidate
+   prefetch policy is faster under the measured overlap budget because it does
+   not divide limited link progress across several candidates.
+4. The selected one-slot CCT policy reduces total modeled latency from 58.866
+   ms to 55.292 ms and exposed stalls by 7.13%, with 8.38% extra traffic.
+5. Prefetching increases dynamic energy. Total energy falls only when the power
+   consumed during avoided stalls exceeds the measured 56.7 W break-even point.
 
-## 10. Remaining final-project work
+## 10. Final scope and limitations
 
-- Integrate the predictor into the simulation path.
-- Issue expert transfers early and model overlap with useful computation.
-- Manage HBM expert residency and evictions.
-- Measure total/token latency and exposed loading stalls.
-- Quantify incorrect-prefetch traffic and buffer pressure.
-- Measure energy consumption and savings.
-- Compare the completed prefetch design against on-demand loading.
+- The hardware timing and dynamic-energy values come from LLMSimulator and the
+  SSD-offloading framework. Routing-aware prefetch behavior is implemented in
+  the trace-driven simulator because the offloading path does not retain expert
+  identities at its aggregate timing stage.
+- The real Mixtral routes come from teacher-forced C4 inputs rather than
+  free-running generation.
+- The primary overlap window is one measured expert-layer execution period.
+  Longer windows are sensitivity results and are not treated as available work.
+- Stalled-GPU power is reported as a sensitivity instead of assuming one fixed
+  physical value.
+- The final single-GPU hardware calibration contains seven matched synthetic
+  decode samples; predictor evaluation contains 50,000 held-out real routes.
 
 ## 11. References and local papers
 

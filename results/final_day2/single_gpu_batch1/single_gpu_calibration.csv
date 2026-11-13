@@ -1,0 +1,7 @@
+metric,samples,mean_ms,stdev_ms
+resident_expert_execution,7,6.731360687350999,0.0
+offchip_expert_execution,7,7.775162310131001,0.0
+offchip_expert_loading,7,50.114509100323,0.0
+offchip_expert_no_prefetch,7,57.889671410454,0.0
+resident_decoder,7,7.5763390930788574,8.975078290702064e-05
+offchip_decoder_no_prefetch,7,58.86567679157043,0.00010366803059266552

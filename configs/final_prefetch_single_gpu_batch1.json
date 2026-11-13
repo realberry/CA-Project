@@ -1,0 +1,17 @@
+{
+  "trace": "data/day3/c4_results.first24MiB.jsonl.part",
+  "output_directory": "results/final_day2/single_gpu_batch1_prefetch",
+  "energy_raw_directory": "results/final_day2/single_gpu_batch1/raw",
+  "profile_tokens": 50000,
+  "evaluation_tokens": 50000,
+  "layers": 32,
+  "experts_per_layer": 8,
+  "top_k": 2,
+  "candidate_budget": 2,
+  "measured_offchip_expert_load_ms": 50.114509100323,
+  "measured_offchip_expert_execution_ms": 7.775162310131001,
+  "measured_offchip_decoder_ms": 58.86567679157043,
+  "overlap_window": "one_layer_expert_execution",
+  "overlap_multiplier": 1.0,
+  "hybrid_history_bonus": 0.5
+}

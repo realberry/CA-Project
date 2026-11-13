@@ -1,0 +1,49 @@
+{
+  "configuration": {
+    "nodes": 1,
+    "devices": 1,
+    "batch_size": 1,
+    "expert_tensor_degree": 1,
+    "non_expert_tensor_degree": 1,
+    "precision": "FP16",
+    "offchip_link_GBps": 450,
+    "samples": 7
+  },
+  "files": {
+    "baseline": "mixtral_synthesis_N1_D1_TP1_DP1_batchsize1_baseline_NVLink4_GPU_compute.csv",
+    "offchip_compute": "mixtral_synthesis_N1_D1_TP1_DP1_batchsize1_CPU_memory_NVLink4_GPU_compute.csv",
+    "offchip_load": "mixtral_synthesis_N1_D1_TP1_DP1_batchsize1_CPU_memory_NVLink4_offloaded_weight_copy.csv"
+  },
+  "metrics": {
+    "resident_expert_execution": {
+      "mean_ms": 6.731360687350999,
+      "stdev_ms": 0.0
+    },
+    "offchip_expert_execution": {
+      "mean_ms": 7.775162310131001,
+      "stdev_ms": 0.0
+    },
+    "offchip_expert_loading": {
+      "mean_ms": 50.114509100323,
+      "stdev_ms": 0.0
+    },
+    "offchip_expert_no_prefetch": {
+      "mean_ms": 57.889671410454,
+      "stdev_ms": 0.0
+    },
+    "resident_decoder": {
+      "mean_ms": 7.5763390930788574,
+      "stdev_ms": 8.975078290702064e-05
+    },
+    "offchip_decoder_no_prefetch": {
+      "mean_ms": 58.86567679157043,
+      "stdev_ms": 0.00010366803059266552
+    }
+  },
+  "energy": {
+    "compute_dynamic_j": 0.9525702314689223,
+    "offload_dynamic_j": 2.4174322386875,
+    "baseline_total_dynamic_j": 3.370002470156422,
+    "source_unit": "CSV energy fields are nJ"
+  }
+}

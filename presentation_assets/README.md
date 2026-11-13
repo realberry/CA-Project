@@ -4,6 +4,17 @@ This folder contains the curated figures and compact result files for the
 mid-project presentation. The complete methodology and interpretation are in
 `Project/PROJECT_README.md`.
 
+The `final/` subdirectory contains the final-project figures generated from
+the single-GPU, batch-1 calibration. Each figure is supplied as both SVG and
+PNG:
+
+- `final/primary_latency`: baseline, selected CCT policies, and oracle latency;
+- `final/prefetch_sensitivity`: buffer-budget and overlap-window sweep;
+- `final/energy_sensitivity`: total-energy change versus stalled-GPU power.
+
+The final-project numbers, caveats, and reproduction commands are documented
+in `docs/FINAL_DAY2_RESULTS.md`.
+
 ## Plots
 
 - `plots/01_day2_memory_wall.png`: slide-ready raster figure for the loading

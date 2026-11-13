@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#17233c}.title{font-size:25px;font-weight:700}.sub{font-size:14px;fill:#596579}.label{font-size:15px;font-weight:600}.value{font-size:14px;font-weight:700}.tick{font-size:12px;fill:#6b7280}</style>
+<text x="32" y="40" class="title">Measured-calibrated expert prefetch latency</text>
+<text x="32" y="66" class="sub">Held-out 50,000-token Mixtral trace · fixed two-expert budget · identical overlap window</text>
+<line x1="190.0" y1="80" x2="190.0" y2="390" stroke="#e2e7ef"/>
+<text x="190.0" y="414" text-anchor="middle" class="tick">0</text>
+<line x1="303.3" y1="80" x2="303.3" y2="390" stroke="#e2e7ef"/>
+<text x="303.3" y="414" text-anchor="middle" class="tick">10</text>
+<line x1="416.5" y1="80" x2="416.5" y2="390" stroke="#e2e7ef"/>
+<text x="416.5" y="414" text-anchor="middle" class="tick">20</text>
+<line x1="529.8" y1="80" x2="529.8" y2="390" stroke="#e2e7ef"/>
+<text x="529.8" y="414" text-anchor="middle" class="tick">30</text>
+<line x1="643.0" y1="80" x2="643.0" y2="390" stroke="#e2e7ef"/>
+<text x="643.0" y="414" text-anchor="middle" class="tick">40</text>
+<line x1="756.3" y1="80" x2="756.3" y2="390" stroke="#e2e7ef"/>
+<text x="756.3" y="414" text-anchor="middle" class="tick">50</text>
+<line x1="869.5" y1="80" x2="869.5" y2="390" stroke="#e2e7ef"/>
+<text x="869.5" y="414" text-anchor="middle" class="tick">60</text>
+<text x="176" y="114" text-anchor="end" class="label">no prefetch</text>
+<rect x="190" y="90" width="666.7" height="36" rx="5" fill="#e45756"/>
+<text x="865.7" y="114" class="value">58.866 ms · 1.000×</text>
+<text x="176" y="162" text-anchor="end" class="label">static</text>
+<rect x="190" y="138" width="643.0" height="36" rx="5" fill="#9aa4b2"/>
+<text x="842.0" y="162" class="value">56.776 ms · 1.037×</text>
+<text x="176" y="210" text-anchor="end" class="label">ht</text>
+<rect x="190" y="186" width="634.8" height="36" rx="5" fill="#13a89e"/>
+<text x="833.8" y="210" class="value">56.049 ms · 1.050×</text>
+<text x="176" y="258" text-anchor="end" class="label">cct</text>
+<rect x="190" y="234" width="630.5" height="36" rx="5" fill="#2f6fed"/>
+<text x="829.5" y="258" class="value">55.672 ms · 1.057×</text>
+<text x="176" y="306" text-anchor="end" class="label">hybrid</text>
+<rect x="190" y="282" width="634.5" height="36" rx="5" fill="#7b61d1"/>
+<text x="833.5" y="306" class="value">56.026 ms · 1.051×</text>
+<text x="176" y="354" text-anchor="end" class="label">oracle</text>
+<rect x="190" y="330" width="578.6" height="36" rx="5" fill="#17233c"/>
+<text x="777.6" y="354" class="value">51.091 ms · 1.152×</text>
+<text x="550.0" y="455" text-anchor="middle" class="sub">Mean modeled decoder latency (ms)</text>
+</svg>
