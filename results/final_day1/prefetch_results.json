@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "trace": "data/day3/c4_results.first24MiB.jsonl.part",
+    "trace_sha256": "4cb79ab27c967d008878981859f5883243c5890556fbaf4c85afc60f2797c6fe",
+    "profile_tokens": 50000,
+    "evaluation_tokens": 50000,
+    "layers": 32,
+    "experts_per_layer": 8,
+    "top_k": 2,
+    "candidate_budget": 2,
+    "load_per_expert_per_layer_ms": 0.7620895736825223,
+    "execution_per_layer_ms": 0.2365715054585268,
+    "prefetch_overlap_budget_per_layer_ms": 0.2365715054585268,
+    "non_expert_decoder_ms": 0.6259791096457157,
+    "buffer_policy": "two next-layer candidates; partial bytes retained until that layer and discarded immediately afterward",
+    "calibration": {
+      "offchip_expert_load_ms": 48.773732715681426,
+      "offchip_expert_execution_ms": 7.570288174672857,
+      "offchip_decoder_no_prefetch_ms": 56.97
+    }
+  },
+  "policies": [
+    {
+      "policy": "no_prefetch",
+      "tokens": 50000,
+      "candidate_budget": 0,
+      "prediction_recall": 0.0,
+      "prediction_precision": 0.0,
+      "mean_decoder_latency_ms": 56.970000000036144,
+      "stdev_decoder_latency_ms": 0.0,
+      "speedup_vs_no_prefetch": 1.0,
+      "latency_reduction_pct": 0.0,
+      "useful_prefetch_ms_per_token": 0.0,
+      "wasted_prefetch_ms_per_token": 0.0,
+      "wasted_transfer_pct_of_demand": 0.0
+    },
+    {
+      "policy": "static",
+      "tokens": 50000,
+      "candidate_budget": 2,
+      "prediction_recall": 0.2687840625,
+      "prediction_precision": 0.2687840625,
+      "mean_decoder_latency_ms": 54.93522719011237,
+      "stdev_decoder_latency_ms": 0.6217878606884139,
+      "speedup_vs_no_prefetch": 1.0370394902142137,
+      "latency_reduction_pct": 3.571656678817767,
+      "useful_prefetch_ms_per_token": 2.0347728099087217,
+      "wasted_prefetch_ms_per_token": 5.535515364729106,
+      "wasted_transfer_pct_of_demand": 11.34937815196039
+    },
+    {
+      "policy": "ht",
+      "tokens": 50000,
+      "candidate_budget": 2,
+      "prediction_recall": 0.362215,
+      "prediction_precision": 0.362215,
+      "mean_decoder_latency_ms": 54.227928068807266,
+      "stdev_decoder_latency_ms": 0.9738824791740388,
+      "speedup_vs_no_prefetch": 1.0505656776661205,
+      "latency_reduction_pct": 4.813185766591431,
+      "useful_prefetch_ms_per_token": 2.7420719312132853,
+      "wasted_prefetch_ms_per_token": 4.828216243444813,
+      "wasted_transfer_pct_of_demand": 9.899214135588345
+    },
+    {
+      "policy": "cct",
+      "tokens": 50000,
+      "candidate_budget": 2,
+      "prediction_recall": 0.4107971875,
+      "prediction_precision": 0.4107971875,
+      "mean_decoder_latency_ms": 53.86014690927546,
+      "stdev_decoder_latency_ms": 0.7698264286973584,
+      "speedup_vs_no_prefetch": 1.0577394097346053,
+      "latency_reduction_pct": 5.4587556446528245,
+      "useful_prefetch_ms_per_token": 3.1098530907216837,
+      "wasted_prefetch_ms_per_token": 4.46043508391056,
+      "wasted_transfer_pct_of_demand": 9.145158337402519
+    },
+    {
+      "policy": "hybrid",
+      "tokens": 50000,
+      "candidate_budget": 2,
+      "prediction_recall": 0.36518375,
+      "prediction_precision": 0.36518375,
+      "mean_decoder_latency_ms": 54.2054537757889,
+      "stdev_decoder_latency_ms": 0.9644486319631697,
+      "speedup_vs_no_prefetch": 1.0510012559932123,
+      "latency_reduction_pct": 4.852635113648401,
+      "useful_prefetch_ms_per_token": 2.7645462242303713,
+      "wasted_prefetch_ms_per_token": 4.805741950425563,
+      "wasted_transfer_pct_of_demand": 9.85313545395399
+    },
+    {
+      "policy": "oracle",
+      "tokens": 50000,
+      "candidate_budget": 2,
+      "prediction_recall": 1.0,
+      "prediction_precision": 1.0,
+      "mean_decoder_latency_ms": 49.39971182537273,
+      "stdev_decoder_latency_ms": 0.0,
+      "speedup_vs_no_prefetch": 1.1532455938492978,
+      "latency_reduction_pct": 13.288201114022494,
+      "useful_prefetch_ms_per_token": 7.5702881744892805,
+      "wasted_prefetch_ms_per_token": 0.0,
+      "wasted_transfer_pct_of_demand": 0.0
+    }
+  ]
+}

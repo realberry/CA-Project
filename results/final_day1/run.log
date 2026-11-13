@@ -1,0 +1,9 @@
+no_prefetch  latency=56.970000 ms speedup=1.000000x recall=0.000% waste=0.000%
+static       latency=54.935227 ms speedup=1.037039x recall=26.878% waste=11.349%
+ht           latency=54.227928 ms speedup=1.050566x recall=36.221% waste=9.899%
+cct          latency=53.860147 ms speedup=1.057739x recall=41.080% waste=9.145%
+hybrid       latency=54.205454 ms speedup=1.051001x recall=36.518% waste=9.853%
+oracle       latency=49.399712 ms speedup=1.153246x recall=100.000% waste=0.000%
+wrote=/home/verso/ca-assignment/Project/final-prefetch/results/final_day1/policy_summary.csv
+wrote=/home/verso/ca-assignment/Project/final-prefetch/results/final_day1/prefetch_results.json
+wrote=/home/verso/ca-assignment/Project/final-prefetch/results/final_day1/prefetch_latency.svg
