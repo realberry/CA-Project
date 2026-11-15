@@ -18,6 +18,15 @@ from 58.866 ms to 53.798 ms: a 1.094× speedup. It produces a 4.68% HBM hit rate
 with 4.91% additional traffic. Prediction statistics use a disjoint
 50,000-token profile split.
 
+An additional causal ensemble combines CCT with same-layer history-table (HT)
+scores. Per-layer HT and CCT weights are updated from exponentially decayed
+held-out recall (beta = 0.99), after each prediction has been scored. The
+ensemble confirms that HT is stronger in selected layers, but its aggregate
+recall is 36.68% and its complete CAR design reaches 1.077x. Standalone
+CCT+CAR therefore remains the selected 1.094x design. Both predictors use the
+same candidate budget, HBM capacity, overlap window, trace, and hardware
+calibration.
+
 Dynamic energy increases by 3.52% because inaccurate prefetches add traffic.
 When an explicitly labeled 350 W stalled-GPU sensitivity is included, avoided
 stall time gives a 7.92% total-energy saving. This is a simulation result, not
@@ -706,18 +715,21 @@ workload dataset is stored in this repository.
 2. The final one-GPU, batch-1 calibration confirms the memory wall: 50.115 ms
    of expert loading versus 7.775 ms of expert execution.
 3. The held-out CCT predictor achieves 41.53% recall and precision at batch 1.
-   Prediction alone does not change latency; issuing transfers early is what
-   reduces exposed stalls.
+   The adaptive HT-CCT ensemble reaches 36.68%. Prediction alone does not
+   change latency; issuing transfers early is what reduces exposed stalls.
 4. CCT prefetch with LRU reaches 55.737 ms. Adding CAR raises the HBM hit rate
    to 4.68% and reduces latency further to 53.798 ms, a 1.094× speedup over
    on-demand LRU with 4.91% additional traffic.
-5. The primary one-layer overlap produces partial, late prefetches. Longer
+5. Adaptive HT-CCT+CAR reaches 54.638 ms (1.077×). HT receives the larger final
+   weight in seven target layers, but blending its rankings with CCT lowers
+   aggregate recall and does not beat standalone CCT in the sensitivity sweep.
+6. The primary one-layer overlap produces partial, late prefetches. Longer
    overlap increases timely completions and speedup, but also increases unused
    traffic. This boundary is reported rather than assuming unlimited overlap.
-6. Across the measured matrix, the complete design gives about 1.094× speedup
-   at batch 1, 1.093× at batch 4, and 1.123× at batch 8. Context length from
+7. Across the measured matrix, CCT+CAR gives about 1.094× speedup at batch 1,
+   1.087× at batch 4, and 1.119× at batch 8. Context length from
    512 to 2,048 tokens has only a small effect in this simulator.
-7. Dynamic energy rises 3.52% in the primary design. With the explicitly
+8. Dynamic energy rises 3.52% in the primary design. With the explicitly
    labeled 350 W stalled-power sensitivity, total energy falls 7.92%.
 
 ## 10. Final scope and limitations

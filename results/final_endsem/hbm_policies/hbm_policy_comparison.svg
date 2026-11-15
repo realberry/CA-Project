@@ -1,34 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650">
 <rect width="100%" height="100%" fill="#fff"/>
 <style>text{font-family:Segoe UI,Arial,sans-serif;fill:#17233c}.title{font-size:25px;font-weight:700}.sub{font-size:14px;fill:#596579}.label{font-size:15px;font-weight:600}.value{font-size:14px;font-weight:700}.tick{font-size:12px;fill:#6b7280}</style>
-<text x="32" y="42" class="title">Component ablation: prediction, prefetch, and HBM management</text>
-<text x="32" y="68" class="sub">Held-out Mixtral routing · measured-calibrated single-GPU latency · persistent expert cache</text>
-<line x1="215.0" y1="90" x2="215.0" y2="355" stroke="#e2e7ef"/>
-<text x="215.0" y="380" text-anchor="middle" class="tick">0</text>
-<line x1="322.0" y1="90" x2="322.0" y2="355" stroke="#e2e7ef"/>
-<text x="322.0" y="380" text-anchor="middle" class="tick">10</text>
-<line x1="428.9" y1="90" x2="428.9" y2="355" stroke="#e2e7ef"/>
-<text x="428.9" y="380" text-anchor="middle" class="tick">20</text>
-<line x1="535.9" y1="90" x2="535.9" y2="355" stroke="#e2e7ef"/>
-<text x="535.9" y="380" text-anchor="middle" class="tick">30</text>
-<line x1="642.8" y1="90" x2="642.8" y2="355" stroke="#e2e7ef"/>
-<text x="642.8" y="380" text-anchor="middle" class="tick">40</text>
-<line x1="749.8" y1="90" x2="749.8" y2="355" stroke="#e2e7ef"/>
-<text x="749.8" y="380" text-anchor="middle" class="tick">50</text>
-<line x1="856.8" y1="90" x2="856.8" y2="355" stroke="#e2e7ef"/>
-<text x="856.8" y="380" text-anchor="middle" class="tick">60</text>
-<text x="201" y="137" text-anchor="end" class="label">On demand + LRU</text>
-<rect x="215" y="112" width="629.6" height="38" rx="5" fill="#e45756"/>
-<text x="853.6" y="137" class="value">58.866 ms · 1.000×</text>
-<text x="201" y="199" text-anchor="end" class="label">Prediction only</text>
-<rect x="215" y="174" width="629.6" height="38" rx="5" fill="#9aa4b2"/>
-<text x="853.6" y="199" class="value">58.866 ms · 1.000×</text>
-<text x="201" y="261" text-anchor="end" class="label">CCT prefetch + LRU</text>
-<rect x="215" y="236" width="596.2" height="38" rx="5" fill="#2f6fed"/>
-<text x="820.2" y="261" class="value">55.737 ms · 1.056×</text>
-<text x="201" y="323" text-anchor="end" class="label">CCT prefetch + CAR</text>
-<rect x="215" y="298" width="575.4" height="38" rx="5" fill="#13a89e"/>
-<text x="799.4" y="323" class="value">53.798 ms · 1.094×</text>
-<text x="555.0" y="414" text-anchor="middle" class="sub">Mean modeled token latency (ms)</text>
-<text x="32" y="458" class="sub">Complete design: 4.68% HBM hit rate · 0.00% timely among issued-correct prefetches · 4.91% traffic change.</text>
+<text x="32" y="42" class="title">Component ablation: CCT and adaptive HT–CCT prefetch</text>
+<text x="32" y="68" class="sub">Held-out Mixtral routing · identical measured calibration, candidate budget, overlap, and HBM capacity</text>
+<line x1="235.0" y1="90" x2="235.0" y2="515" stroke="#e2e7ef"/>
+<text x="235.0" y="540" text-anchor="middle" class="tick">0</text>
+<line x1="348.3" y1="90" x2="348.3" y2="515" stroke="#e2e7ef"/>
+<text x="348.3" y="540" text-anchor="middle" class="tick">10</text>
+<line x1="461.5" y1="90" x2="461.5" y2="515" stroke="#e2e7ef"/>
+<text x="461.5" y="540" text-anchor="middle" class="tick">20</text>
+<line x1="574.8" y1="90" x2="574.8" y2="515" stroke="#e2e7ef"/>
+<text x="574.8" y="540" text-anchor="middle" class="tick">30</text>
+<line x1="688.0" y1="90" x2="688.0" y2="515" stroke="#e2e7ef"/>
+<text x="688.0" y="540" text-anchor="middle" class="tick">40</text>
+<line x1="801.3" y1="90" x2="801.3" y2="515" stroke="#e2e7ef"/>
+<text x="801.3" y="540" text-anchor="middle" class="tick">50</text>
+<line x1="914.5" y1="90" x2="914.5" y2="515" stroke="#e2e7ef"/>
+<text x="914.5" y="540" text-anchor="middle" class="tick">60</text>
+<text x="221" y="127" text-anchor="end" class="label">On demand + LRU</text>
+<rect x="235" y="102" width="666.7" height="34" rx="5" fill="#e45756"/>
+<text x="910.7" y="125" class="value">58.866 ms · 1.000×</text>
+<text x="221" y="185" text-anchor="end" class="label">Prediction only</text>
+<rect x="235" y="160" width="666.7" height="34" rx="5" fill="#9aa4b2"/>
+<text x="910.7" y="183" class="value">58.866 ms · 1.000×</text>
+<text x="221" y="243" text-anchor="end" class="label">CCT prefetch + LRU</text>
+<rect x="235" y="218" width="631.2" height="34" rx="5" fill="#2f6fed"/>
+<text x="875.2" y="241" class="value">55.737 ms · 1.056×</text>
+<text x="221" y="301" text-anchor="end" class="label">CCT prefetch + CAR</text>
+<rect x="235" y="276" width="609.3" height="34" rx="5" fill="#13a89e"/>
+<text x="853.3" y="299" class="value">53.798 ms · 1.094×</text>
+<text x="221" y="359" text-anchor="end" class="label">Adaptive prediction only</text>
+<rect x="235" y="334" width="666.7" height="34" rx="5" fill="#c0c6d0"/>
+<text x="910.7" y="357" class="value">58.866 ms · 1.000×</text>
+<text x="221" y="417" text-anchor="end" class="label">Adaptive prefetch + LRU</text>
+<rect x="235" y="392" width="635.4" height="34" rx="5" fill="#7b61d1"/>
+<text x="879.4" y="415" class="value">56.103 ms · 1.049×</text>
+<text x="221" y="475" text-anchor="end" class="label">Adaptive prefetch + CAR</text>
+<rect x="235" y="450" width="618.8" height="34" rx="5" fill="#087f5b"/>
+<text x="862.8" y="473" class="value">54.638 ms · 1.077×</text>
+<text x="595.0" y="570" text-anchor="middle" class="sub">Mean modeled token latency (ms)</text>
+<text x="32" y="615" class="sub">Complete CCT: 53.798 ms · Complete adaptive ensemble: 54.638 ms · both use CAR and identical resources.</text>
 </svg>

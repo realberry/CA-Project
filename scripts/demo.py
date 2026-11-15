@@ -76,9 +76,10 @@ def summary() -> None:
         for row in read_csv(
             "results/final_endsem/batch_context_prefetch/batch_context_prefetch.csv"
         )
-        if row["scenario"] == "complete_car"
+        if row["scenario"] in ("complete_car", "adaptive_complete_car")
     ]
-    complete = primary["complete_car"]
+    cct_complete = primary["complete_car"]
+    adaptive_complete = primary["adaptive_complete_car"]
 
     print("\nMID-SEMESTER EVIDENCE")
     print(
@@ -94,27 +95,35 @@ def summary() -> None:
 
     print("\nEND-SEMESTER PRIMARY RESULT")
     print(
-        f'  Baseline {float(primary["baseline_lru"]["mean_token_latency_ms"]):.3f} ms '
-        f'-> complete CCT+CAR {float(complete["mean_token_latency_ms"]):.3f} ms '
-        f'({float(complete["speedup_vs_baseline"]):.3f}x)'
+        f'  Baseline: {float(primary["baseline_lru"]["mean_token_latency_ms"]):.3f} ms'
     )
     print(
-        f'  HBM hit {percent(complete["hbm_hit_rate"])}; '
-        f'coverage {percent(complete["prefetch_coverage"])}; '
-        f'unused traffic {percent(complete["unused_prefetch_traffic_rate"])}; '
-        f'traffic change {float(complete["additional_traffic_pct_vs_baseline"]):+.2f}%'
+        f'  CCT+CAR: {float(cct_complete["mean_token_latency_ms"]):.3f} ms, '
+        f'{float(cct_complete["speedup_vs_baseline"]):.3f}x, '
+        f'{percent(cct_complete["prediction_recall"])} recall'
     )
     print(
-        f'  Exposed stall {float(complete["exposed_stall_ms_per_token"]):.3f} ms; '
-        f'350 W energy sensitivity saving {float(complete["total_energy_saving_350w_pct"]):.2f}%'
+        f'  Adaptive HT-CCT+CAR: {float(adaptive_complete["mean_token_latency_ms"]):.3f} ms, '
+        f'{float(adaptive_complete["speedup_vs_baseline"]):.3f}x, '
+        f'{percent(adaptive_complete["prediction_recall"])} recall'
     )
 
     print("\nBATCH / CONTEXT SENSITIVITY (COMPLETE DESIGN)")
-    for row in batch_rows:
+    for batch in sorted({int(row["batch_size"]) for row in batch_rows}):
+        cct = [
+            row for row in batch_rows
+            if int(row["batch_size"]) == batch and row["scenario"] == "complete_car"
+        ]
+        adaptive = [
+            row for row in batch_rows
+            if int(row["batch_size"]) == batch
+            and row["scenario"] == "adaptive_complete_car"
+        ]
+        cct_speedups = [float(row["speedup_vs_baseline"]) for row in cct]
+        adaptive_speedups = [float(row["speedup_vs_baseline"]) for row in adaptive]
         print(
-            f'  batch={row["batch_size"]:>1s}, context={row["context_length"]:>4s}: '
-            f'{float(row["normalized_latency_ms_per_sequence"]):6.3f} ms/sequence, '
-            f'{float(row["speedup_vs_baseline"]):.3f}x'
+            f'  batch={batch}: CCT {min(cct_speedups):.3f}-{max(cct_speedups):.3f}x; '
+            f'adaptive {min(adaptive_speedups):.3f}-{max(adaptive_speedups):.3f}x'
         )
 
 

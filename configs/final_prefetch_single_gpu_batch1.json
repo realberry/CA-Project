@@ -9,6 +9,7 @@
   "top_k": 2,
   "candidate_budget": 2,
   "hbm_capacity_experts": 16,
+  "adaptive_decay_beta": 0.99,
   "measured_offchip_expert_load_ms": 50.114509100323,
   "measured_offchip_expert_execution_ms": 7.775162310131001,
   "measured_offchip_decoder_ms": 58.86567679157043,

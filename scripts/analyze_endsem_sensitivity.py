@@ -46,7 +46,13 @@ def run() -> tuple[list[dict], dict]:
             metadata_by_key[f"capacity={capacity},budget={budget},overlap={overlap:g}"] = metadata
             print(f"completed capacity={capacity} budget={budget} overlap={overlap:g}")
         for row in cache[key]:
-            if row["scenario"] not in ("baseline_lru", "prefetch_lru", "complete_car"):
+            if row["scenario"] not in (
+                "baseline_lru",
+                "prefetch_lru",
+                "complete_car",
+                "adaptive_prefetch_lru",
+                "adaptive_complete_car",
+            ):
                 continue
             output_rows.append(
                 {
@@ -64,14 +70,30 @@ def run() -> tuple[list[dict], dict]:
 
 
 def write_svg(rows: list[dict], destination: Path) -> None:
-    width, height = 1100, 590
+    width, height = 1100, 620
     dimensions = (
         ("hbm_capacity_experts", "HBM capacity (experts)"),
         ("candidate_budget", "Prefetch candidates"),
         ("overlap_multiplier", "Overlap multiplier"),
     )
-    colors = {"prefetch_lru": "#2f6fed", "complete_car": "#13a89e"}
-    labels = {"prefetch_lru": "CCT + LRU", "complete_car": "CCT + CAR"}
+    scenarios = (
+        "prefetch_lru",
+        "complete_car",
+        "adaptive_prefetch_lru",
+        "adaptive_complete_car",
+    )
+    colors = {
+        "prefetch_lru": "#2f6fed",
+        "complete_car": "#13a89e",
+        "adaptive_prefetch_lru": "#7b61d1",
+        "adaptive_complete_car": "#087f5b",
+    }
+    labels = {
+        "prefetch_lru": "CCT + LRU",
+        "complete_car": "CCT + CAR",
+        "adaptive_prefetch_lru": "Adaptive + LRU",
+        "adaptive_complete_car": "Adaptive + CAR",
+    }
     svg = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#fff"/>',
@@ -85,7 +107,7 @@ def write_svg(rows: list[dict], destination: Path) -> None:
     plotted = [
         float(row["speedup_vs_baseline"])
         for row in rows
-        if row["scenario"] in ("prefetch_lru", "complete_car")
+        if row["scenario"] in scenarios
     ]
     ymin = min(0.98, min(plotted) * 0.98)
     ymax = max(plotted) * 1.05
@@ -103,7 +125,7 @@ def write_svg(rows: list[dict], destination: Path) -> None:
             x = left + panel_width * index / max(1, len(values) - 1)
             shown = f"{value:g}×" if dimension == "overlap_multiplier" else f"{value:g}"
             svg.append(f'<text x="{x:.1f}" y="470" text-anchor="middle" class="tick">{shown}</text>')
-        for scenario in ("prefetch_lru", "complete_car"):
+        for scenario in scenarios:
             series = sorted(
                 (row for row in rows if row["dimension"] == dimension and row["scenario"] == scenario),
                 key=lambda row: float(row["value"]),
@@ -116,10 +138,13 @@ def write_svg(rows: list[dict], destination: Path) -> None:
                 points.append(f"{x:.1f},{y:.1f}")
                 svg.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{colors[scenario]}"/>')
             svg.append(f'<polyline points="{" ".join(points)}" fill="none" stroke="{colors[scenario]}" stroke-width="4"/>')
-    for index, scenario in enumerate(("prefetch_lru", "complete_car")):
-        x = 390 + index * 250
-        svg.append(f'<line x1="{x}" y1="535" x2="{x+32}" y2="535" stroke="{colors[scenario]}" stroke-width="4"/>')
-        svg.append(f'<text x="{x+42}" y="540" class="legend">{labels[scenario]}</text>')
+    for index, scenario in enumerate(scenarios):
+        row = index // 2
+        column = index % 2
+        x = 305 + column * 340
+        y = 530 + row * 38
+        svg.append(f'<line x1="{x}" y1="{y}" x2="{x+32}" y2="{y}" stroke="{colors[scenario]}" stroke-width="4"/>')
+        svg.append(f'<text x="{x+42}" y="{y+5}" class="legend">{labels[scenario]}</text>')
     svg.append('<text x="30" y="290" text-anchor="middle" class="sub" transform="rotate(-90 30 290)">Speedup versus matching no-prefetch LRU</text>')
     svg.append('</svg>')
     destination.write_text("\n".join(svg), encoding="utf-8")

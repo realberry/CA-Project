@@ -69,10 +69,14 @@ def run() -> tuple[list[dict], dict]:
 
 
 def write_svg(rows: list[dict], destination: Path) -> None:
-    selected = [row for row in rows if row["scenario"] == "complete_car"]
+    selected = [
+        row
+        for row in rows
+        if row["scenario"] in ("complete_car", "adaptive_complete_car")
+    ]
     batches = sorted({int(row["batch_size"]) for row in selected})
     contexts = sorted({int(row["context_length"]) for row in selected})
-    width, height = 1000, 560
+    width, height = 1000, 620
     left, top, plot_w, plot_h = 100, 100, 820, 350
     ymin, ymax = 1.0, max(float(row["speedup_vs_baseline"]) for row in selected) * 1.08
     colors = {1: "#e45756", 4: "#2f6fed", 8: "#13a89e"}
@@ -92,19 +96,34 @@ def write_svg(rows: list[dict], destination: Path) -> None:
         x = left + plot_w * index / (len(contexts) - 1)
         svg.append(f'<text x="{x:.1f}" y="475" text-anchor="middle" class="tick">{context}</text>')
     for batch in batches:
-        series = sorted((row for row in selected if int(row["batch_size"]) == batch), key=lambda row: int(row["context_length"]))
-        points = []
-        for index, row in enumerate(series):
-            x = left + plot_w * index / (len(series) - 1)
-            speedup = float(row["speedup_vs_baseline"])
-            y = top + plot_h * (ymax - speedup) / (ymax - ymin)
-            points.append(f"{x:.1f},{y:.1f}")
-            svg.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{colors[batch]}"/>')
-        svg.append(f'<polyline points="{" ".join(points)}" fill="none" stroke="{colors[batch]}" stroke-width="4"/>')
+        for scenario in ("complete_car", "adaptive_complete_car"):
+            series = sorted(
+                (
+                    row
+                    for row in selected
+                    if int(row["batch_size"]) == batch
+                    and row["scenario"] == scenario
+                ),
+                key=lambda row: int(row["context_length"]),
+            )
+            points = []
+            dash = "" if scenario == "complete_car" else ' stroke-dasharray="9 7"'
+            for index, row in enumerate(series):
+                x = left + plot_w * index / (len(series) - 1)
+                speedup = float(row["speedup_vs_baseline"])
+                y = top + plot_h * (ymax - speedup) / (ymax - ymin)
+                points.append(f"{x:.1f},{y:.1f}")
+                fill = colors[batch] if scenario == "complete_car" else "#fff"
+                svg.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{fill}" stroke="{colors[batch]}" stroke-width="3"/>')
+            svg.append(f'<polyline points="{" ".join(points)}" fill="none" stroke="{colors[batch]}" stroke-width="4"{dash}/>')
         lx = 250 + batches.index(batch) * 220
-        svg.append(f'<line x1="{lx}" y1="525" x2="{lx+30}" y2="525" stroke="{colors[batch]}" stroke-width="4"/>')
-        svg.append(f'<text x="{lx+38}" y="530" class="legend">batch {batch}</text>')
+        svg.append(f'<line x1="{lx}" y1="535" x2="{lx+30}" y2="535" stroke="{colors[batch]}" stroke-width="4"/>')
+        svg.append(f'<text x="{lx+38}" y="540" class="legend">batch {batch}</text>')
     svg.append(f'<text x="{left+plot_w/2}" y="500" text-anchor="middle" class="sub">Input context length (tokens)</text>')
+    svg.append('<line x1="330" y1="580" x2="365" y2="580" stroke="#17233c" stroke-width="4"/>')
+    svg.append('<text x="375" y="585" class="legend">CCT</text>')
+    svg.append('<line x1="540" y1="580" x2="575" y2="580" stroke="#17233c" stroke-width="4" stroke-dasharray="9 7"/>')
+    svg.append('<text x="585" y="585" class="legend">Adaptive HT–CCT</text>')
     svg.append(f'<text x="28" y="{top+plot_h/2}" text-anchor="middle" class="sub" transform="rotate(-90 28 {top+plot_h/2})">Speedup versus matching no-prefetch LRU</text>')
     svg.append('</svg>')
     destination.write_text("\n".join(svg), encoding="utf-8")

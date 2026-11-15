@@ -2,9 +2,9 @@
 """Evaluate predictor-driven expert prefetching with persistent HBM caches.
 
 The evaluator uses held-out Mixtral routes and latency/energy values measured by
-LLMSimulator.  It compares the four end-semester ablations requested by the
-course: on-demand LRU, prediction without prefetch, CCT prefetch with LRU, and
-CCT prefetch with correlation-aware retention (CAR).
+LLMSimulator. It compares on-demand LRU, prediction without prefetch, prefetch
+with LRU, and prefetch with correlation-aware retention (CAR) for standalone
+CCT and a causal adaptive HT-CCT ensemble.
 
 CAR is training-free.  When space is required, it retains experts that are
 predicted for the immediately following layer, appeared at the same layer in
@@ -86,11 +86,94 @@ class Metrics:
 
 
 SCENARIOS = (
-    ("baseline_lru", False, "lru", False),
-    ("prediction_only", False, "lru", True),
-    ("prefetch_lru", True, "lru", True),
-    ("complete_car", True, "car", True),
+    ("baseline_lru", "none", False, "lru"),
+    ("prediction_only", "cct", False, "lru"),
+    ("prefetch_lru", "cct", True, "lru"),
+    ("complete_car", "cct", True, "car"),
+    ("adaptive_prediction_only", "adaptive_ht_cct", False, "lru"),
+    ("adaptive_prefetch_lru", "adaptive_ht_cct", True, "lru"),
+    ("adaptive_complete_car", "adaptive_ht_cct", True, "car"),
 )
+
+
+class AdaptiveEnsemble:
+    """Per-layer causal ensemble using exponentially decayed predictor recall."""
+
+    def __init__(self, layers: int, experts: int, beta: float) -> None:
+        if not 0.0 <= beta < 1.0:
+            raise ValueError("adaptive_decay_beta must be in [0, 1)")
+        self.layers = layers
+        self.experts = experts
+        self.beta = beta
+        self.ht_reliability = [0.5 for _ in range(layers)]
+        self.cct_reliability = [0.5 for _ in range(layers)]
+
+    @staticmethod
+    def _normalize(scores: list[float]) -> list[float]:
+        total = sum(scores)
+        if total == 0.0:
+            return [0.0 for _ in scores]
+        return [score / total for score in scores]
+
+    def rank_and_update(
+        self,
+        *,
+        target_layer: int,
+        cct_values: list[float],
+        previous_group,
+        actual_next: set[int],
+        budget: int,
+    ) -> list[int]:
+        cct_values = self._normalize(cct_values)
+        cct_ranking = top_indices(cct_values, budget)
+        ht_values = [0.0 for _ in range(self.experts)]
+        if previous_group is not None:
+            for token in previous_group:
+                ht_values[token[0][target_layer]] += 1.0
+                ht_values[token[1][target_layer]] += 1.0
+            ht_values = self._normalize(ht_values)
+            denominator = (
+                self.ht_reliability[target_layer]
+                + self.cct_reliability[target_layer]
+            )
+            ht_weight = self.ht_reliability[target_layer] / denominator
+            cct_weight = self.cct_reliability[target_layer] / denominator
+            combined = [
+                ht_weight * ht_values[expert]
+                + cct_weight * cct_values[expert]
+                for expert in range(self.experts)
+            ]
+            ranking = top_indices(combined, budget)
+            ht_prediction = set(top_indices(ht_values, budget))
+            ht_reward = len(ht_prediction & actual_next) / len(actual_next)
+            self.ht_reliability[target_layer] = (
+                self.beta * self.ht_reliability[target_layer]
+                + (1.0 - self.beta) * ht_reward
+            )
+        else:
+            # HT has no causal input for the first batch in an independent row.
+            ranking = cct_ranking
+        cct_reward = len(set(cct_ranking) & actual_next) / len(actual_next)
+        self.cct_reliability[target_layer] = (
+            self.beta * self.cct_reliability[target_layer]
+            + (1.0 - self.beta) * cct_reward
+        )
+        return ranking
+
+    def metadata(self) -> dict:
+        weights = []
+        for layer in range(self.layers):
+            denominator = self.ht_reliability[layer] + self.cct_reliability[layer]
+            weights.append(
+                {
+                    "layer": layer,
+                    "ht_reliability": self.ht_reliability[layer],
+                    "cct_reliability": self.cct_reliability[layer],
+                    "ht_weight": self.ht_reliability[layer] / denominator,
+                    "cct_weight": self.cct_reliability[layer] / denominator,
+                }
+            )
+        return {"beta": self.beta, "final_layer_weights": weights}
 
 
 def iter_evaluation_groups(
@@ -112,8 +195,12 @@ def iter_evaluation_groups(
         position = start
         while position + batch_size <= len(routes) and evaluated < evaluation_tokens:
             group = routes[position : position + batch_size]
-            previous = routes[position - 1] if position > start else None
-            yield group, previous
+            previous_group = (
+                routes[position - batch_size : position]
+                if position - batch_size >= start
+                else None
+            )
+            yield group, previous_group
             position += batch_size
             evaluated += batch_size
         if evaluated >= evaluation_tokens:
@@ -129,9 +216,9 @@ class CacheSimulator:
         self,
         *,
         name: str,
+        predictor: str,
         enable_prefetch: bool,
         eviction_policy: str,
-        enable_prediction: bool,
         capacity: int,
         load_ms: float,
         overlap_ms: float,
@@ -140,9 +227,10 @@ class CacheSimulator:
         layer_frequency: list[list[int]],
     ) -> None:
         self.name = name
+        self.predictor = predictor
         self.enable_prefetch = enable_prefetch
         self.eviction_policy = eviction_policy
-        self.enable_prediction = enable_prediction
+        self.enable_prediction = predictor != "none"
         self.capacity = capacity
         self.load_ms = load_ms
         self.overlap_ms = overlap_ms
@@ -170,15 +258,17 @@ class CacheSimulator:
         entry: CacheEntry,
         *,
         current_layer: int,
-        previous_token,
+        previous_group,
         next_event: int,
     ) -> float:
         immediate = 1.0 if entry.prefetch_target_event == next_event else 0.0
         history = 0.0
-        if previous_token is not None:
+        if previous_group is not None:
             history = float(
-                entry.expert
-                in (previous_token[0][entry.layer], previous_token[1][entry.layer])
+                any(
+                    entry.expert in (token[0][entry.layer], token[1][entry.layer])
+                    for token in previous_group
+                )
             )
         frequencies = self.layer_frequency[entry.layer]
         maximum = max(frequencies) or 1
@@ -191,7 +281,7 @@ class CacheSimulator:
         recency = 1.0 / (1.0 + age)
         return 4.0 * immediate + 1.5 * history + frequency + 0.5 * proximity + 0.25 * recency
 
-    def _evict_one(self, *, current_layer: int, previous_token, next_event: int) -> None:
+    def _evict_one(self, *, current_layer: int, previous_group, next_event: int) -> None:
         if not self.cache:
             raise RuntimeError("Cannot evict from an empty cache")
         if self.eviction_policy == "lru":
@@ -206,7 +296,7 @@ class CacheSimulator:
                     self._car_score(
                         entry,
                         current_layer=current_layer,
-                        previous_token=previous_token,
+                        previous_group=previous_group,
                         next_event=next_event,
                     ),
                     entry.last_access,
@@ -225,7 +315,7 @@ class CacheSimulator:
         key: tuple[int, int],
         *,
         current_layer: int,
-        previous_token,
+        previous_group,
         next_event: int,
     ) -> CacheEntry:
         entry = self.cache.get(key)
@@ -234,7 +324,7 @@ class CacheSimulator:
         while len(self.cache) >= self.capacity:
             self._evict_one(
                 current_layer=current_layer,
-                previous_token=previous_token,
+                previous_group=previous_group,
                 next_event=next_event,
             )
         entry = CacheEntry(
@@ -252,7 +342,7 @@ class CacheSimulator:
         *,
         layer: int,
         actual_experts: set[int],
-        previous_token,
+        previous_group,
         event_id: int,
     ) -> float:
         self.clock += 1
@@ -288,7 +378,7 @@ class CacheSimulator:
                 entry = self._ensure_entry(
                     key,
                     current_layer=layer,
-                    previous_token=previous_token,
+                    previous_group=previous_group,
                     next_event=event_id + 1,
                 )
                 remaining = max(0.0, self.load_ms - entry.loaded_ms)
@@ -310,7 +400,7 @@ class CacheSimulator:
         target_layer: int,
         ranked_experts: list[int],
         actual_next: set[int],
-        previous_token,
+        previous_group,
         target_event: int,
     ) -> None:
         if not self.enable_prediction:
@@ -345,7 +435,7 @@ class CacheSimulator:
                 entry = self._ensure_entry(
                     key,
                     current_layer=target_layer - 1,
-                    previous_token=previous_token,
+                    previous_group=previous_group,
                     next_event=target_event,
                 )
                 progress = min(
@@ -375,6 +465,7 @@ def evaluate(config: dict) -> tuple[list[dict], dict]:
     effective_candidate_budget = min(experts, candidate_budget * routing_batch_size)
     capacity = int(config.get("hbm_capacity_experts", 16))
     overlap_multiplier = float(config.get("overlap_multiplier", 1.0))
+    adaptive_beta = float(config.get("adaptive_decay_beta", 0.99))
 
     total_load_ms = float(config["measured_offchip_expert_load_ms"])
     total_execution_ms = float(config["measured_offchip_expert_execution_ms"])
@@ -400,12 +491,13 @@ def evaluate(config: dict) -> tuple[list[dict], dict]:
     overlap_ms = execution_per_layer_ms * overlap_multiplier
 
     cct, layer_frequency = build_profile(trace, profile_tokens, layers, experts)
+    adaptive_ensemble = AdaptiveEnsemble(layers, experts, adaptive_beta)
     simulators = [
         CacheSimulator(
             name=name,
+            predictor=predictor,
             enable_prefetch=enable_prefetch,
             eviction_policy=eviction,
-            enable_prediction=enable_prediction,
             capacity=capacity,
             load_ms=load_per_expert_ms,
             overlap_ms=overlap_ms,
@@ -413,12 +505,12 @@ def evaluate(config: dict) -> tuple[list[dict], dict]:
             layers=layers,
             layer_frequency=layer_frequency,
         )
-        for name, enable_prefetch, eviction, enable_prediction in SCENARIOS
+        for name, predictor, enable_prefetch, eviction in SCENARIOS
     ]
 
     evaluated_routes = 0
     event_id = 0
-    for group, previous in iter_evaluation_groups(
+    for group, previous_group in iter_evaluation_groups(
         trace, profile_tokens, evaluation_tokens, routing_batch_size
     ):
         token_stalls = {simulator.name: 0.0 for simulator in simulators}
@@ -433,7 +525,7 @@ def evaluate(config: dict) -> tuple[list[dict], dict]:
                 token_stalls[simulator.name] += simulator.demand(
                     layer=layer,
                     actual_experts=actual,
-                    previous_token=previous,
+                    previous_group=previous_group,
                     event_id=event_id,
                 )
             if layer + 1 < layers:
@@ -442,18 +534,32 @@ def evaluate(config: dict) -> tuple[list[dict], dict]:
                     scores = cct_scores(cct, layer + 1, token, layer_frequency, experts)
                     for expert, score in enumerate(scores):
                         aggregate_scores[expert] += score
-                ranking = top_indices(aggregate_scores, effective_candidate_budget)
+                cct_ranking = top_indices(
+                    aggregate_scores, effective_candidate_budget
+                )
                 actual_next = {
                     token[route][layer + 1]
                     for token in group
                     for route in range(top_k)
                 }
+                adaptive_ranking = adaptive_ensemble.rank_and_update(
+                    target_layer=layer + 1,
+                    cct_values=aggregate_scores,
+                    previous_group=previous_group,
+                    actual_next=actual_next,
+                    budget=effective_candidate_budget,
+                )
                 for simulator in simulators:
+                    ranking = (
+                        adaptive_ranking
+                        if simulator.predictor == "adaptive_ht_cct"
+                        else cct_ranking
+                    )
                     simulator.predict_and_prefetch(
                         target_layer=layer + 1,
                         ranked_experts=ranking,
                         actual_next=actual_next,
-                        previous_token=previous,
+                        previous_group=previous_group,
                         target_event=event_id + 1,
                     )
         for simulator in simulators:
@@ -484,6 +590,7 @@ def evaluate(config: dict) -> tuple[list[dict], dict]:
         rows.append(
             {
                 "scenario": simulator.name,
+                "predictor": simulator.predictor,
                 "prediction_enabled": simulator.enable_prediction,
                 "prefetch_enabled": simulator.enable_prefetch,
                 "eviction_policy": simulator.eviction_policy,
@@ -598,6 +705,7 @@ def evaluate(config: dict) -> tuple[list[dict], dict]:
         "overlap_ms_per_layer": overlap_ms,
         "expert_load_ms": load_per_expert_ms,
         "expert_size_mib": expert_size_mib,
+        "adaptive_ensemble": adaptive_ensemble.metadata(),
         "metric_definitions": {
             "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
             "timely": "correct issued prefetch fully resident before demand",
@@ -615,43 +723,50 @@ def csv_rows(rows: list[dict]) -> list[dict]:
 
 
 def write_svg(rows: list[dict], destination: Path) -> None:
-    width, height = 1000, 500
-    left, plot_width = 215, 680
+    width, height = 1100, 650
+    left, plot_width = 235, 720
     maximum = max(row["mean_token_latency_ms"] for row in rows) * 1.08
     colors = {
         "baseline_lru": "#e45756",
         "prediction_only": "#9aa4b2",
         "prefetch_lru": "#2f6fed",
         "complete_car": "#13a89e",
+        "adaptive_prediction_only": "#c0c6d0",
+        "adaptive_prefetch_lru": "#7b61d1",
+        "adaptive_complete_car": "#087f5b",
     }
     labels = {
         "baseline_lru": "On demand + LRU",
         "prediction_only": "Prediction only",
         "prefetch_lru": "CCT prefetch + LRU",
         "complete_car": "CCT prefetch + CAR",
+        "adaptive_prediction_only": "Adaptive prediction only",
+        "adaptive_prefetch_lru": "Adaptive prefetch + LRU",
+        "adaptive_complete_car": "Adaptive prefetch + CAR",
     }
     svg = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#fff"/>',
         '<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#17233c}.title{font-size:25px;font-weight:700}.sub{font-size:14px;fill:#596579}.label{font-size:15px;font-weight:600}.value{font-size:14px;font-weight:700}.tick{font-size:12px;fill:#6b7280}</style>',
-        '<text x="32" y="42" class="title">Component ablation: prediction, prefetch, and HBM management</text>',
-        '<text x="32" y="68" class="sub">Held-out Mixtral routing · measured-calibrated single-GPU latency · persistent expert cache</text>',
+        '<text x="32" y="42" class="title">Component ablation: CCT and adaptive HT–CCT prefetch</text>',
+        '<text x="32" y="68" class="sub">Held-out Mixtral routing · identical measured calibration, candidate budget, overlap, and HBM capacity</text>',
     ]
     for tick in range(0, 61, 10):
         x = left + plot_width * tick / maximum
-        svg.append(f'<line x1="{x:.1f}" y1="90" x2="{x:.1f}" y2="355" stroke="#e2e7ef"/>')
-        svg.append(f'<text x="{x:.1f}" y="380" text-anchor="middle" class="tick">{tick}</text>')
+        svg.append(f'<line x1="{x:.1f}" y1="90" x2="{x:.1f}" y2="515" stroke="#e2e7ef"/>')
+        svg.append(f'<text x="{x:.1f}" y="540" text-anchor="middle" class="tick">{tick}</text>')
     for index, row in enumerate(rows):
-        y = 112 + index * 62
+        y = 102 + index * 58
         value = row["mean_token_latency_ms"]
         bar_width = plot_width * value / maximum
         scenario = row["scenario"]
         svg.append(f'<text x="{left-14}" y="{y+25}" text-anchor="end" class="label">{labels[scenario]}</text>')
-        svg.append(f'<rect x="{left}" y="{y}" width="{bar_width:.1f}" height="38" rx="5" fill="{colors[scenario]}"/>')
-        svg.append(f'<text x="{left+bar_width+9:.1f}" y="{y+25}" class="value">{value:.3f} ms · {row["speedup_vs_baseline"]:.3f}×</text>')
-    svg.append(f'<text x="{left+plot_width/2}" y="414" text-anchor="middle" class="sub">Mean modeled token latency (ms)</text>')
-    complete = next(row for row in rows if row["scenario"] == "complete_car")
-    svg.append(f'<text x="32" y="458" class="sub">Complete design: {100*complete["hbm_hit_rate"]:.2f}% HBM hit rate · {100*complete["timely_prefetch_rate"]:.2f}% timely among issued-correct prefetches · {complete["additional_traffic_pct_vs_baseline"]:.2f}% traffic change.</text>')
+        svg.append(f'<rect x="{left}" y="{y}" width="{bar_width:.1f}" height="34" rx="5" fill="{colors[scenario]}"/>')
+        svg.append(f'<text x="{left+bar_width+9:.1f}" y="{y+23}" class="value">{value:.3f} ms · {row["speedup_vs_baseline"]:.3f}×</text>')
+    svg.append(f'<text x="{left+plot_width/2}" y="570" text-anchor="middle" class="sub">Mean modeled token latency (ms)</text>')
+    cct = next(row for row in rows if row["scenario"] == "complete_car")
+    adaptive = next(row for row in rows if row["scenario"] == "adaptive_complete_car")
+    svg.append(f'<text x="32" y="615" class="sub">Complete CCT: {cct["mean_token_latency_ms"]:.3f} ms · Complete adaptive ensemble: {adaptive["mean_token_latency_ms"]:.3f} ms · both use CAR and identical resources.</text>')
     svg.append('</svg>')
     destination.write_text("\n".join(svg), encoding="utf-8")
 

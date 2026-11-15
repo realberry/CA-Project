@@ -24,6 +24,235 @@
         "overlap_ms_per_layer": 0.24297382219159377,
         "expert_load_ms": 0.7830392046925468,
         "expert_size_mib": 336.0439702145062,
+        "adaptive_ensemble": {
+          "beta": 0.99,
+          "final_layer_weights": [
+            {
+              "layer": 0,
+              "ht_reliability": 0.5,
+              "cct_reliability": 0.5,
+              "ht_weight": 0.5,
+              "cct_weight": 0.5
+            },
+            {
+              "layer": 1,
+              "ht_reliability": 0.3283696287650295,
+              "cct_reliability": 0.2771698027408123,
+              "ht_weight": 0.5422762113913,
+              "cct_weight": 0.45772378860870006
+            },
+            {
+              "layer": 2,
+              "ht_reliability": 0.3078540484486673,
+              "cct_reliability": 0.337903869803343,
+              "ht_weight": 0.47673290523791256,
+              "cct_weight": 0.5232670947620874
+            },
+            {
+              "layer": 3,
+              "ht_reliability": 0.35875862588796326,
+              "cct_reliability": 0.33384577511738284,
+              "ht_weight": 0.517984906488046,
+              "cct_weight": 0.4820150935119541
+            },
+            {
+              "layer": 4,
+              "ht_reliability": 0.36874196767747913,
+              "cct_reliability": 0.2712839513704153,
+              "ht_weight": 0.5761359918454887,
+              "cct_weight": 0.42386400815451125
+            },
+            {
+              "layer": 5,
+              "ht_reliability": 0.342682347874665,
+              "cct_reliability": 0.2589690908139094,
+              "ht_weight": 0.5695695644335417,
+              "cct_weight": 0.4304304355664584
+            },
+            {
+              "layer": 6,
+              "ht_reliability": 0.4283594694698902,
+              "cct_reliability": 0.28538375179205994,
+              "ht_weight": 0.6001590722115993,
+              "cct_weight": 0.39984092778840075
+            },
+            {
+              "layer": 7,
+              "ht_reliability": 0.42931800327142583,
+              "cct_reliability": 0.2949484891579306,
+              "ht_weight": 0.5927624814333112,
+              "cct_weight": 0.40723751856668877
+            },
+            {
+              "layer": 8,
+              "ht_reliability": 0.47116959989463275,
+              "cct_reliability": 0.37345907473750306,
+              "ht_weight": 0.5578422969121228,
+              "cct_weight": 0.44215770308787705
+            },
+            {
+              "layer": 9,
+              "ht_reliability": 0.4522163601612514,
+              "cct_reliability": 0.3385753836236011,
+              "ht_weight": 0.5718526574352856,
+              "cct_weight": 0.42814734256471443
+            },
+            {
+              "layer": 10,
+              "ht_reliability": 0.3812322484858321,
+              "cct_reliability": 0.33237844520649107,
+              "ht_weight": 0.5342300106424726,
+              "cct_weight": 0.46576998935752734
+            },
+            {
+              "layer": 11,
+              "ht_reliability": 0.4086735746536541,
+              "cct_reliability": 0.48444170891414995,
+              "ht_weight": 0.45758210857291665,
+              "cct_weight": 0.5424178914270834
+            },
+            {
+              "layer": 12,
+              "ht_reliability": 0.43776682117808274,
+              "cct_reliability": 0.4613177829059896,
+              "ht_weight": 0.4869028111365009,
+              "cct_weight": 0.5130971888634992
+            },
+            {
+              "layer": 13,
+              "ht_reliability": 0.42907594762708484,
+              "cct_reliability": 0.35539804458748675,
+              "ht_weight": 0.5469600673641233,
+              "cct_weight": 0.45303993263587666
+            },
+            {
+              "layer": 14,
+              "ht_reliability": 0.4468553632187376,
+              "cct_reliability": 0.44341219239460866,
+              "ht_weight": 0.5019337842890146,
+              "cct_weight": 0.49806621571098547
+            },
+            {
+              "layer": 15,
+              "ht_reliability": 0.39289097542815915,
+              "cct_reliability": 0.41564477294421703,
+              "ht_weight": 0.4859290095942805,
+              "cct_weight": 0.5140709904057195
+            },
+            {
+              "layer": 16,
+              "ht_reliability": 0.3508744141585169,
+              "cct_reliability": 0.45752712461701117,
+              "ht_weight": 0.4340348172641783,
+              "cct_weight": 0.5659651827358216
+            },
+            {
+              "layer": 17,
+              "ht_reliability": 0.3824162396687555,
+              "cct_reliability": 0.4177201797689042,
+              "ht_weight": 0.4779387994081306,
+              "cct_weight": 0.5220612005918693
+            },
+            {
+              "layer": 18,
+              "ht_reliability": 0.3105189333357707,
+              "cct_reliability": 0.4199477916058415,
+              "ht_weight": 0.4250966166331412,
+              "cct_weight": 0.5749033833668589
+            },
+            {
+              "layer": 19,
+              "ht_reliability": 0.3485384586839374,
+              "cct_reliability": 0.40962484386434056,
+              "ht_weight": 0.4597142297872474,
+              "cct_weight": 0.5402857702127527
+            },
+            {
+              "layer": 20,
+              "ht_reliability": 0.37325783791141043,
+              "cct_reliability": 0.38695966687643796,
+              "ht_weight": 0.4909882179253086,
+              "cct_weight": 0.5090117820746914
+            },
+            {
+              "layer": 21,
+              "ht_reliability": 0.40553482243381095,
+              "cct_reliability": 0.2899899954961131,
+              "ht_weight": 0.5830630510652313,
+              "cct_weight": 0.4169369489347688
+            },
+            {
+              "layer": 22,
+              "ht_reliability": 0.39514524225691683,
+              "cct_reliability": 0.2905783220349376,
+              "ht_weight": 0.5762456809618066,
+              "cct_weight": 0.4237543190381934
+            },
+            {
+              "layer": 23,
+              "ht_reliability": 0.39439860557551637,
+              "cct_reliability": 0.36300697897250733,
+              "ht_weight": 0.5207231285611275,
+              "cct_weight": 0.47927687143887265
+            },
+            {
+              "layer": 24,
+              "ht_reliability": 0.3435310963645843,
+              "cct_reliability": 0.28413844028399404,
+              "ht_weight": 0.5473120428925988,
+              "cct_weight": 0.4526879571074013
+            },
+            {
+              "layer": 25,
+              "ht_reliability": 0.39105801026706005,
+              "cct_reliability": 0.3029668013240378,
+              "ht_weight": 0.5634640199253592,
+              "cct_weight": 0.4365359800746408
+            },
+            {
+              "layer": 26,
+              "ht_reliability": 0.370898512837392,
+              "cct_reliability": 0.35044059525754273,
+              "ht_weight": 0.514180513263643,
+              "cct_weight": 0.485819486736357
+            },
+            {
+              "layer": 27,
+              "ht_reliability": 0.366420373571314,
+              "cct_reliability": 0.35989429744599827,
+              "ht_weight": 0.5044925955551572,
+              "cct_weight": 0.49550740444484276
+            },
+            {
+              "layer": 28,
+              "ht_reliability": 0.3309663697817246,
+              "cct_reliability": 0.40038611575891103,
+              "ht_weight": 0.45254015857629204,
+              "cct_weight": 0.5474598414237078
+            },
+            {
+              "layer": 29,
+              "ht_reliability": 0.36771927011857947,
+              "cct_reliability": 0.4205010726516348,
+              "ht_weight": 0.466518370772091,
+              "cct_weight": 0.533481629227909
+            },
+            {
+              "layer": 30,
+              "ht_reliability": 0.4275601135674175,
+              "cct_reliability": 0.48640654811424056,
+              "ht_weight": 0.4678071219586127,
+              "cct_weight": 0.5321928780413873
+            },
+            {
+              "layer": 31,
+              "ht_reliability": 0.48403693531000846,
+              "cct_reliability": 0.6034910548687996,
+              "ht_weight": 0.4450799792568324,
+              "cct_weight": 0.5549200207431677
+            }
+          ]
+        },
         "metric_definitions": {
           "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
           "timely": "correct issued prefetch fully resident before demand",
@@ -53,6 +282,235 @@
         "overlap_ms_per_layer": 0.24297382219159377,
         "expert_load_ms": 0.7830392046925468,
         "expert_size_mib": 336.0439702145062,
+        "adaptive_ensemble": {
+          "beta": 0.99,
+          "final_layer_weights": [
+            {
+              "layer": 0,
+              "ht_reliability": 0.5,
+              "cct_reliability": 0.5,
+              "ht_weight": 0.5,
+              "cct_weight": 0.5
+            },
+            {
+              "layer": 1,
+              "ht_reliability": 0.3283696287650295,
+              "cct_reliability": 0.2771698027408123,
+              "ht_weight": 0.5422762113913,
+              "cct_weight": 0.45772378860870006
+            },
+            {
+              "layer": 2,
+              "ht_reliability": 0.3078540484486673,
+              "cct_reliability": 0.337903869803343,
+              "ht_weight": 0.47673290523791256,
+              "cct_weight": 0.5232670947620874
+            },
+            {
+              "layer": 3,
+              "ht_reliability": 0.35875862588796326,
+              "cct_reliability": 0.33384577511738284,
+              "ht_weight": 0.517984906488046,
+              "cct_weight": 0.4820150935119541
+            },
+            {
+              "layer": 4,
+              "ht_reliability": 0.36874196767747913,
+              "cct_reliability": 0.2712839513704153,
+              "ht_weight": 0.5761359918454887,
+              "cct_weight": 0.42386400815451125
+            },
+            {
+              "layer": 5,
+              "ht_reliability": 0.342682347874665,
+              "cct_reliability": 0.2589690908139094,
+              "ht_weight": 0.5695695644335417,
+              "cct_weight": 0.4304304355664584
+            },
+            {
+              "layer": 6,
+              "ht_reliability": 0.4283594694698902,
+              "cct_reliability": 0.28538375179205994,
+              "ht_weight": 0.6001590722115993,
+              "cct_weight": 0.39984092778840075
+            },
+            {
+              "layer": 7,
+              "ht_reliability": 0.42931800327142583,
+              "cct_reliability": 0.2949484891579306,
+              "ht_weight": 0.5927624814333112,
+              "cct_weight": 0.40723751856668877
+            },
+            {
+              "layer": 8,
+              "ht_reliability": 0.47116959989463275,
+              "cct_reliability": 0.37345907473750306,
+              "ht_weight": 0.5578422969121228,
+              "cct_weight": 0.44215770308787705
+            },
+            {
+              "layer": 9,
+              "ht_reliability": 0.4522163601612514,
+              "cct_reliability": 0.3385753836236011,
+              "ht_weight": 0.5718526574352856,
+              "cct_weight": 0.42814734256471443
+            },
+            {
+              "layer": 10,
+              "ht_reliability": 0.3812322484858321,
+              "cct_reliability": 0.33237844520649107,
+              "ht_weight": 0.5342300106424726,
+              "cct_weight": 0.46576998935752734
+            },
+            {
+              "layer": 11,
+              "ht_reliability": 0.4086735746536541,
+              "cct_reliability": 0.48444170891414995,
+              "ht_weight": 0.45758210857291665,
+              "cct_weight": 0.5424178914270834
+            },
+            {
+              "layer": 12,
+              "ht_reliability": 0.43776682117808274,
+              "cct_reliability": 0.4613177829059896,
+              "ht_weight": 0.4869028111365009,
+              "cct_weight": 0.5130971888634992
+            },
+            {
+              "layer": 13,
+              "ht_reliability": 0.42907594762708484,
+              "cct_reliability": 0.35539804458748675,
+              "ht_weight": 0.5469600673641233,
+              "cct_weight": 0.45303993263587666
+            },
+            {
+              "layer": 14,
+              "ht_reliability": 0.4468553632187376,
+              "cct_reliability": 0.44341219239460866,
+              "ht_weight": 0.5019337842890146,
+              "cct_weight": 0.49806621571098547
+            },
+            {
+              "layer": 15,
+              "ht_reliability": 0.39289097542815915,
+              "cct_reliability": 0.41564477294421703,
+              "ht_weight": 0.4859290095942805,
+              "cct_weight": 0.5140709904057195
+            },
+            {
+              "layer": 16,
+              "ht_reliability": 0.3508744141585169,
+              "cct_reliability": 0.45752712461701117,
+              "ht_weight": 0.4340348172641783,
+              "cct_weight": 0.5659651827358216
+            },
+            {
+              "layer": 17,
+              "ht_reliability": 0.3824162396687555,
+              "cct_reliability": 0.4177201797689042,
+              "ht_weight": 0.4779387994081306,
+              "cct_weight": 0.5220612005918693
+            },
+            {
+              "layer": 18,
+              "ht_reliability": 0.3105189333357707,
+              "cct_reliability": 0.4199477916058415,
+              "ht_weight": 0.4250966166331412,
+              "cct_weight": 0.5749033833668589
+            },
+            {
+              "layer": 19,
+              "ht_reliability": 0.3485384586839374,
+              "cct_reliability": 0.40962484386434056,
+              "ht_weight": 0.4597142297872474,
+              "cct_weight": 0.5402857702127527
+            },
+            {
+              "layer": 20,
+              "ht_reliability": 0.37325783791141043,
+              "cct_reliability": 0.38695966687643796,
+              "ht_weight": 0.4909882179253086,
+              "cct_weight": 0.5090117820746914
+            },
+            {
+              "layer": 21,
+              "ht_reliability": 0.40553482243381095,
+              "cct_reliability": 0.2899899954961131,
+              "ht_weight": 0.5830630510652313,
+              "cct_weight": 0.4169369489347688
+            },
+            {
+              "layer": 22,
+              "ht_reliability": 0.39514524225691683,
+              "cct_reliability": 0.2905783220349376,
+              "ht_weight": 0.5762456809618066,
+              "cct_weight": 0.4237543190381934
+            },
+            {
+              "layer": 23,
+              "ht_reliability": 0.39439860557551637,
+              "cct_reliability": 0.36300697897250733,
+              "ht_weight": 0.5207231285611275,
+              "cct_weight": 0.47927687143887265
+            },
+            {
+              "layer": 24,
+              "ht_reliability": 0.3435310963645843,
+              "cct_reliability": 0.28413844028399404,
+              "ht_weight": 0.5473120428925988,
+              "cct_weight": 0.4526879571074013
+            },
+            {
+              "layer": 25,
+              "ht_reliability": 0.39105801026706005,
+              "cct_reliability": 0.3029668013240378,
+              "ht_weight": 0.5634640199253592,
+              "cct_weight": 0.4365359800746408
+            },
+            {
+              "layer": 26,
+              "ht_reliability": 0.370898512837392,
+              "cct_reliability": 0.35044059525754273,
+              "ht_weight": 0.514180513263643,
+              "cct_weight": 0.485819486736357
+            },
+            {
+              "layer": 27,
+              "ht_reliability": 0.366420373571314,
+              "cct_reliability": 0.35989429744599827,
+              "ht_weight": 0.5044925955551572,
+              "cct_weight": 0.49550740444484276
+            },
+            {
+              "layer": 28,
+              "ht_reliability": 0.3309663697817246,
+              "cct_reliability": 0.40038611575891103,
+              "ht_weight": 0.45254015857629204,
+              "cct_weight": 0.5474598414237078
+            },
+            {
+              "layer": 29,
+              "ht_reliability": 0.36771927011857947,
+              "cct_reliability": 0.4205010726516348,
+              "ht_weight": 0.466518370772091,
+              "cct_weight": 0.533481629227909
+            },
+            {
+              "layer": 30,
+              "ht_reliability": 0.4275601135674175,
+              "cct_reliability": 0.48640654811424056,
+              "ht_weight": 0.4678071219586127,
+              "cct_weight": 0.5321928780413873
+            },
+            {
+              "layer": 31,
+              "ht_reliability": 0.48403693531000846,
+              "cct_reliability": 0.6034910548687996,
+              "ht_weight": 0.4450799792568324,
+              "cct_weight": 0.5549200207431677
+            }
+          ]
+        },
         "metric_definitions": {
           "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
           "timely": "correct issued prefetch fully resident before demand",
@@ -82,6 +540,235 @@
         "overlap_ms_per_layer": 0.24297382219159377,
         "expert_load_ms": 0.7830392046925468,
         "expert_size_mib": 336.0439702145062,
+        "adaptive_ensemble": {
+          "beta": 0.99,
+          "final_layer_weights": [
+            {
+              "layer": 0,
+              "ht_reliability": 0.5,
+              "cct_reliability": 0.5,
+              "ht_weight": 0.5,
+              "cct_weight": 0.5
+            },
+            {
+              "layer": 1,
+              "ht_reliability": 0.3283696287650295,
+              "cct_reliability": 0.2771698027408123,
+              "ht_weight": 0.5422762113913,
+              "cct_weight": 0.45772378860870006
+            },
+            {
+              "layer": 2,
+              "ht_reliability": 0.3078540484486673,
+              "cct_reliability": 0.337903869803343,
+              "ht_weight": 0.47673290523791256,
+              "cct_weight": 0.5232670947620874
+            },
+            {
+              "layer": 3,
+              "ht_reliability": 0.35875862588796326,
+              "cct_reliability": 0.33384577511738284,
+              "ht_weight": 0.517984906488046,
+              "cct_weight": 0.4820150935119541
+            },
+            {
+              "layer": 4,
+              "ht_reliability": 0.36874196767747913,
+              "cct_reliability": 0.2712839513704153,
+              "ht_weight": 0.5761359918454887,
+              "cct_weight": 0.42386400815451125
+            },
+            {
+              "layer": 5,
+              "ht_reliability": 0.342682347874665,
+              "cct_reliability": 0.2589690908139094,
+              "ht_weight": 0.5695695644335417,
+              "cct_weight": 0.4304304355664584
+            },
+            {
+              "layer": 6,
+              "ht_reliability": 0.4283594694698902,
+              "cct_reliability": 0.28538375179205994,
+              "ht_weight": 0.6001590722115993,
+              "cct_weight": 0.39984092778840075
+            },
+            {
+              "layer": 7,
+              "ht_reliability": 0.42931800327142583,
+              "cct_reliability": 0.2949484891579306,
+              "ht_weight": 0.5927624814333112,
+              "cct_weight": 0.40723751856668877
+            },
+            {
+              "layer": 8,
+              "ht_reliability": 0.47116959989463275,
+              "cct_reliability": 0.37345907473750306,
+              "ht_weight": 0.5578422969121228,
+              "cct_weight": 0.44215770308787705
+            },
+            {
+              "layer": 9,
+              "ht_reliability": 0.4522163601612514,
+              "cct_reliability": 0.3385753836236011,
+              "ht_weight": 0.5718526574352856,
+              "cct_weight": 0.42814734256471443
+            },
+            {
+              "layer": 10,
+              "ht_reliability": 0.3812322484858321,
+              "cct_reliability": 0.33237844520649107,
+              "ht_weight": 0.5342300106424726,
+              "cct_weight": 0.46576998935752734
+            },
+            {
+              "layer": 11,
+              "ht_reliability": 0.4086735746536541,
+              "cct_reliability": 0.48444170891414995,
+              "ht_weight": 0.45758210857291665,
+              "cct_weight": 0.5424178914270834
+            },
+            {
+              "layer": 12,
+              "ht_reliability": 0.43776682117808274,
+              "cct_reliability": 0.4613177829059896,
+              "ht_weight": 0.4869028111365009,
+              "cct_weight": 0.5130971888634992
+            },
+            {
+              "layer": 13,
+              "ht_reliability": 0.42907594762708484,
+              "cct_reliability": 0.35539804458748675,
+              "ht_weight": 0.5469600673641233,
+              "cct_weight": 0.45303993263587666
+            },
+            {
+              "layer": 14,
+              "ht_reliability": 0.4468553632187376,
+              "cct_reliability": 0.44341219239460866,
+              "ht_weight": 0.5019337842890146,
+              "cct_weight": 0.49806621571098547
+            },
+            {
+              "layer": 15,
+              "ht_reliability": 0.39289097542815915,
+              "cct_reliability": 0.41564477294421703,
+              "ht_weight": 0.4859290095942805,
+              "cct_weight": 0.5140709904057195
+            },
+            {
+              "layer": 16,
+              "ht_reliability": 0.3508744141585169,
+              "cct_reliability": 0.45752712461701117,
+              "ht_weight": 0.4340348172641783,
+              "cct_weight": 0.5659651827358216
+            },
+            {
+              "layer": 17,
+              "ht_reliability": 0.3824162396687555,
+              "cct_reliability": 0.4177201797689042,
+              "ht_weight": 0.4779387994081306,
+              "cct_weight": 0.5220612005918693
+            },
+            {
+              "layer": 18,
+              "ht_reliability": 0.3105189333357707,
+              "cct_reliability": 0.4199477916058415,
+              "ht_weight": 0.4250966166331412,
+              "cct_weight": 0.5749033833668589
+            },
+            {
+              "layer": 19,
+              "ht_reliability": 0.3485384586839374,
+              "cct_reliability": 0.40962484386434056,
+              "ht_weight": 0.4597142297872474,
+              "cct_weight": 0.5402857702127527
+            },
+            {
+              "layer": 20,
+              "ht_reliability": 0.37325783791141043,
+              "cct_reliability": 0.38695966687643796,
+              "ht_weight": 0.4909882179253086,
+              "cct_weight": 0.5090117820746914
+            },
+            {
+              "layer": 21,
+              "ht_reliability": 0.40553482243381095,
+              "cct_reliability": 0.2899899954961131,
+              "ht_weight": 0.5830630510652313,
+              "cct_weight": 0.4169369489347688
+            },
+            {
+              "layer": 22,
+              "ht_reliability": 0.39514524225691683,
+              "cct_reliability": 0.2905783220349376,
+              "ht_weight": 0.5762456809618066,
+              "cct_weight": 0.4237543190381934
+            },
+            {
+              "layer": 23,
+              "ht_reliability": 0.39439860557551637,
+              "cct_reliability": 0.36300697897250733,
+              "ht_weight": 0.5207231285611275,
+              "cct_weight": 0.47927687143887265
+            },
+            {
+              "layer": 24,
+              "ht_reliability": 0.3435310963645843,
+              "cct_reliability": 0.28413844028399404,
+              "ht_weight": 0.5473120428925988,
+              "cct_weight": 0.4526879571074013
+            },
+            {
+              "layer": 25,
+              "ht_reliability": 0.39105801026706005,
+              "cct_reliability": 0.3029668013240378,
+              "ht_weight": 0.5634640199253592,
+              "cct_weight": 0.4365359800746408
+            },
+            {
+              "layer": 26,
+              "ht_reliability": 0.370898512837392,
+              "cct_reliability": 0.35044059525754273,
+              "ht_weight": 0.514180513263643,
+              "cct_weight": 0.485819486736357
+            },
+            {
+              "layer": 27,
+              "ht_reliability": 0.366420373571314,
+              "cct_reliability": 0.35989429744599827,
+              "ht_weight": 0.5044925955551572,
+              "cct_weight": 0.49550740444484276
+            },
+            {
+              "layer": 28,
+              "ht_reliability": 0.3309663697817246,
+              "cct_reliability": 0.40038611575891103,
+              "ht_weight": 0.45254015857629204,
+              "cct_weight": 0.5474598414237078
+            },
+            {
+              "layer": 29,
+              "ht_reliability": 0.36771927011857947,
+              "cct_reliability": 0.4205010726516348,
+              "ht_weight": 0.466518370772091,
+              "cct_weight": 0.533481629227909
+            },
+            {
+              "layer": 30,
+              "ht_reliability": 0.4275601135674175,
+              "cct_reliability": 0.48640654811424056,
+              "ht_weight": 0.4678071219586127,
+              "cct_weight": 0.5321928780413873
+            },
+            {
+              "layer": 31,
+              "ht_reliability": 0.48403693531000846,
+              "cct_reliability": 0.6034910548687996,
+              "ht_weight": 0.4450799792568324,
+              "cct_weight": 0.5549200207431677
+            }
+          ]
+        },
         "metric_definitions": {
           "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
           "timely": "correct issued prefetch fully resident before demand",
@@ -111,6 +798,235 @@
         "overlap_ms_per_layer": 0.24297382219159377,
         "expert_load_ms": 0.7830392046925468,
         "expert_size_mib": 336.0439702145062,
+        "adaptive_ensemble": {
+          "beta": 0.99,
+          "final_layer_weights": [
+            {
+              "layer": 0,
+              "ht_reliability": 0.5,
+              "cct_reliability": 0.5,
+              "ht_weight": 0.5,
+              "cct_weight": 0.5
+            },
+            {
+              "layer": 1,
+              "ht_reliability": 0.15177450899513031,
+              "cct_reliability": 0.17500241938794056,
+              "ht_weight": 0.4644590722672121,
+              "cct_weight": 0.5355409277327878
+            },
+            {
+              "layer": 2,
+              "ht_reliability": 0.18204020044184596,
+              "cct_reliability": 0.16748535849747043,
+              "ht_weight": 0.5208208549734449,
+              "cct_weight": 0.4791791450265552
+            },
+            {
+              "layer": 3,
+              "ht_reliability": 0.19180984477621138,
+              "cct_reliability": 0.18935813856223757,
+              "ht_weight": 0.5032160442654452,
+              "cct_weight": 0.4967839557345549
+            },
+            {
+              "layer": 4,
+              "ht_reliability": 0.19956436228019006,
+              "cct_reliability": 0.11468265823612912,
+              "ht_weight": 0.6350557022061772,
+              "cct_weight": 0.36494429779382276
+            },
+            {
+              "layer": 5,
+              "ht_reliability": 0.17368233358018653,
+              "cct_reliability": 0.11868213909723566,
+              "ht_weight": 0.5940610088142189,
+              "cct_weight": 0.40593899118578125
+            },
+            {
+              "layer": 6,
+              "ht_reliability": 0.21613017306677124,
+              "cct_reliability": 0.15672091755221204,
+              "ht_weight": 0.5796688772130609,
+              "cct_weight": 0.4203311227869392
+            },
+            {
+              "layer": 7,
+              "ht_reliability": 0.20186356126916216,
+              "cct_reliability": 0.1386565393234955,
+              "ht_weight": 0.5928095314133557,
+              "cct_weight": 0.4071904685866442
+            },
+            {
+              "layer": 8,
+              "ht_reliability": 0.22104258675587865,
+              "cct_reliability": 0.16573178804587413,
+              "ht_weight": 0.5715026670760632,
+              "cct_weight": 0.42849733292393666
+            },
+            {
+              "layer": 9,
+              "ht_reliability": 0.2414214376394915,
+              "cct_reliability": 0.18631364137746553,
+              "ht_weight": 0.5644181398316425,
+              "cct_weight": 0.4355818601683575
+            },
+            {
+              "layer": 10,
+              "ht_reliability": 0.16542085253726482,
+              "cct_reliability": 0.19280361662366743,
+              "ht_weight": 0.4617798804328733,
+              "cct_weight": 0.5382201195671267
+            },
+            {
+              "layer": 11,
+              "ht_reliability": 0.2109623823503194,
+              "cct_reliability": 0.24736561288594064,
+              "ht_weight": 0.46028692234165625,
+              "cct_weight": 0.5397130776583439
+            },
+            {
+              "layer": 12,
+              "ht_reliability": 0.23847224055864688,
+              "cct_reliability": 0.24957601554993827,
+              "ht_weight": 0.48862430625218656,
+              "cct_weight": 0.5113756937478134
+            },
+            {
+              "layer": 13,
+              "ht_reliability": 0.21773535939018857,
+              "cct_reliability": 0.16847417096707093,
+              "ht_weight": 0.563775210800144,
+              "cct_weight": 0.4362247891998561
+            },
+            {
+              "layer": 14,
+              "ht_reliability": 0.23492676089019837,
+              "cct_reliability": 0.2787991188899053,
+              "ht_weight": 0.4572998366186203,
+              "cct_weight": 0.5427001633813797
+            },
+            {
+              "layer": 15,
+              "ht_reliability": 0.20148923922994255,
+              "cct_reliability": 0.25267598688087045,
+              "ht_weight": 0.44364743852225413,
+              "cct_weight": 0.5563525614777459
+            },
+            {
+              "layer": 16,
+              "ht_reliability": 0.15658584267287656,
+              "cct_reliability": 0.2832853903856145,
+              "ht_weight": 0.35598109379445336,
+              "cct_weight": 0.6440189062055467
+            },
+            {
+              "layer": 17,
+              "ht_reliability": 0.1665120377253669,
+              "cct_reliability": 0.18480595620973347,
+              "ht_weight": 0.47396387489371516,
+              "cct_weight": 0.5260361251062848
+            },
+            {
+              "layer": 18,
+              "ht_reliability": 0.17349801491153255,
+              "cct_reliability": 0.2129875536451163,
+              "ht_weight": 0.4489120138676076,
+              "cct_weight": 0.5510879861323924
+            },
+            {
+              "layer": 19,
+              "ht_reliability": 0.15638791298011695,
+              "cct_reliability": 0.22607533858884082,
+              "ht_weight": 0.40889657330103085,
+              "cct_weight": 0.5911034266989691
+            },
+            {
+              "layer": 20,
+              "ht_reliability": 0.20097392144261653,
+              "cct_reliability": 0.24034694190329547,
+              "ht_weight": 0.45539184329269067,
+              "cct_weight": 0.5446081567073092
+            },
+            {
+              "layer": 21,
+              "ht_reliability": 0.22762925695428057,
+              "cct_reliability": 0.16551377791118715,
+              "ht_weight": 0.5789985749898241,
+              "cct_weight": 0.4210014250101758
+            },
+            {
+              "layer": 22,
+              "ht_reliability": 0.18709866776036646,
+              "cct_reliability": 0.16440835423926894,
+              "ht_weight": 0.5322757613660433,
+              "cct_weight": 0.46772423863395673
+            },
+            {
+              "layer": 23,
+              "ht_reliability": 0.21571441771968264,
+              "cct_reliability": 0.17687362939321002,
+              "ht_weight": 0.5494676144779614,
+              "cct_weight": 0.45053238552203867
+            },
+            {
+              "layer": 24,
+              "ht_reliability": 0.16752138384058948,
+              "cct_reliability": 0.14330015610768487,
+              "ht_weight": 0.538963238739721,
+              "cct_weight": 0.46103676126027915
+            },
+            {
+              "layer": 25,
+              "ht_reliability": 0.2117244103176524,
+              "cct_reliability": 0.14438716332793927,
+              "ht_weight": 0.5945451537847635,
+              "cct_weight": 0.40545484621523664
+            },
+            {
+              "layer": 26,
+              "ht_reliability": 0.20723494491124209,
+              "cct_reliability": 0.19413390487636842,
+              "ht_weight": 0.5163204494342377,
+              "cct_weight": 0.48367955056576234
+            },
+            {
+              "layer": 27,
+              "ht_reliability": 0.15278726027737832,
+              "cct_reliability": 0.1971889893810617,
+              "ht_weight": 0.43656465382005594,
+              "cct_weight": 0.5634353461799442
+            },
+            {
+              "layer": 28,
+              "ht_reliability": 0.17269760627923628,
+              "cct_reliability": 0.23690654355563498,
+              "ht_weight": 0.42162074370793845,
+              "cct_weight": 0.5783792562920615
+            },
+            {
+              "layer": 29,
+              "ht_reliability": 0.15674553756222015,
+              "cct_reliability": 0.23968421510648957,
+              "ht_weight": 0.39539297065124673,
+              "cct_weight": 0.6046070293487532
+            },
+            {
+              "layer": 30,
+              "ht_reliability": 0.21375835644363128,
+              "cct_reliability": 0.25982782745611566,
+              "ht_weight": 0.45136104833852503,
+              "cct_weight": 0.5486389516614749
+            },
+            {
+              "layer": 31,
+              "ht_reliability": 0.20964664179489934,
+              "cct_reliability": 0.3229701162796799,
+              "ht_weight": 0.3936163078172311,
+              "cct_weight": 0.6063836921827688
+            }
+          ]
+        },
         "metric_definitions": {
           "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
           "timely": "correct issued prefetch fully resident before demand",
@@ -140,6 +1056,235 @@
         "overlap_ms_per_layer": 0.24297382219159377,
         "expert_load_ms": 0.7830392046925468,
         "expert_size_mib": 336.0439702145062,
+        "adaptive_ensemble": {
+          "beta": 0.99,
+          "final_layer_weights": [
+            {
+              "layer": 0,
+              "ht_reliability": 0.5,
+              "cct_reliability": 0.5,
+              "ht_weight": 0.5,
+              "cct_weight": 0.5
+            },
+            {
+              "layer": 1,
+              "ht_reliability": 0.6162739258789349,
+              "cct_reliability": 0.5740155950292419,
+              "ht_weight": 0.5177512824012137,
+              "cct_weight": 0.4822487175987862
+            },
+            {
+              "layer": 2,
+              "ht_reliability": 0.5805139996778308,
+              "cct_reliability": 0.61813620174495,
+              "ht_weight": 0.48430642983980554,
+              "cct_weight": 0.5156935701601943
+            },
+            {
+              "layer": 3,
+              "ht_reliability": 0.5660085715647933,
+              "cct_reliability": 0.5912250995937841,
+              "ht_weight": 0.48910482443716624,
+              "cct_weight": 0.5108951755628338
+            },
+            {
+              "layer": 4,
+              "ht_reliability": 0.5868860112490334,
+              "cct_reliability": 0.5571967830721689,
+              "ht_weight": 0.5129751222220239,
+              "cct_weight": 0.48702487777797615
+            },
+            {
+              "layer": 5,
+              "ht_reliability": 0.6077129273809608,
+              "cct_reliability": 0.5316468888743123,
+              "ht_weight": 0.5333810432057602,
+              "cct_weight": 0.4666189567942398
+            },
+            {
+              "layer": 6,
+              "ht_reliability": 0.6134752423237088,
+              "cct_reliability": 0.5887188819812438,
+              "ht_weight": 0.5102963239638099,
+              "cct_weight": 0.48970367603619014
+            },
+            {
+              "layer": 7,
+              "ht_reliability": 0.6370348127328415,
+              "cct_reliability": 0.5976390246331917,
+              "ht_weight": 0.5159539252016929,
+              "cct_weight": 0.484046074798307
+            },
+            {
+              "layer": 8,
+              "ht_reliability": 0.6668353359871568,
+              "cct_reliability": 0.655205456001059,
+              "ht_weight": 0.5043984573156051,
+              "cct_weight": 0.4956015426843949
+            },
+            {
+              "layer": 9,
+              "ht_reliability": 0.6101635831864605,
+              "cct_reliability": 0.6079151697730629,
+              "ht_weight": 0.5009229343373467,
+              "cct_weight": 0.4990770656626533
+            },
+            {
+              "layer": 10,
+              "ht_reliability": 0.6444809945046357,
+              "cct_reliability": 0.5826892883701738,
+              "ht_weight": 0.5251765003589015,
+              "cct_weight": 0.47482349964109843
+            },
+            {
+              "layer": 11,
+              "ht_reliability": 0.6665783892855176,
+              "cct_reliability": 0.7545559503593596,
+              "ht_weight": 0.46904671197522874,
+              "cct_weight": 0.5309532880247713
+            },
+            {
+              "layer": 12,
+              "ht_reliability": 0.6677816186935557,
+              "cct_reliability": 0.7684547022650403,
+              "ht_weight": 0.46495246565541115,
+              "cct_weight": 0.5350475343445888
+            },
+            {
+              "layer": 13,
+              "ht_reliability": 0.6689422917838398,
+              "cct_reliability": 0.7011086097848768,
+              "ht_weight": 0.488260904042249,
+              "cct_weight": 0.511739095957751
+            },
+            {
+              "layer": 14,
+              "ht_reliability": 0.6075423317055193,
+              "cct_reliability": 0.735543080313276,
+              "ht_weight": 0.45234824700561727,
+              "cct_weight": 0.5476517529943826
+            },
+            {
+              "layer": 15,
+              "ht_reliability": 0.5930620608959676,
+              "cct_reliability": 0.6841343476168887,
+              "ht_weight": 0.4643467965796411,
+              "cct_weight": 0.5356532034203588
+            },
+            {
+              "layer": 16,
+              "ht_reliability": 0.5578419506856608,
+              "cct_reliability": 0.7015538980330883,
+              "ht_weight": 0.4429440920050541,
+              "cct_weight": 0.5570559079949459
+            },
+            {
+              "layer": 17,
+              "ht_reliability": 0.5248611260036871,
+              "cct_reliability": 0.6596403138450403,
+              "ht_weight": 0.44310720810159343,
+              "cct_weight": 0.5568927918984067
+            },
+            {
+              "layer": 18,
+              "ht_reliability": 0.5216651080397636,
+              "cct_reliability": 0.6624798438759606,
+              "ht_weight": 0.440541596867687,
+              "cct_weight": 0.5594584031323129
+            },
+            {
+              "layer": 19,
+              "ht_reliability": 0.5624974159855838,
+              "cct_reliability": 0.6613383592243378,
+              "ht_weight": 0.4596183796711613,
+              "cct_weight": 0.5403816203288386
+            },
+            {
+              "layer": 20,
+              "ht_reliability": 0.5991113226006176,
+              "cct_reliability": 0.6282035263574021,
+              "ht_weight": 0.48814802746765285,
+              "cct_weight": 0.5118519725323472
+            },
+            {
+              "layer": 21,
+              "ht_reliability": 0.6516003766224677,
+              "cct_reliability": 0.5760024772220235,
+              "ht_weight": 0.5307908617040494,
+              "cct_weight": 0.46920913829595057
+            },
+            {
+              "layer": 22,
+              "ht_reliability": 0.5920860686369724,
+              "cct_reliability": 0.571078570009606,
+              "ht_weight": 0.509030320355943,
+              "cct_weight": 0.49096967964405713
+            },
+            {
+              "layer": 23,
+              "ht_reliability": 0.6139263943641508,
+              "cct_reliability": 0.6624720128197312,
+              "ht_weight": 0.48098335982622903,
+              "cct_weight": 0.5190166401737709
+            },
+            {
+              "layer": 24,
+              "ht_reliability": 0.5417378857281753,
+              "cct_reliability": 0.6100445373128749,
+              "ht_weight": 0.4703474153545643,
+              "cct_weight": 0.5296525846454357
+            },
+            {
+              "layer": 25,
+              "ht_reliability": 0.65052316821886,
+              "cct_reliability": 0.6146873982145625,
+              "ht_weight": 0.5141619786283153,
+              "cct_weight": 0.48583802137168475
+            },
+            {
+              "layer": 26,
+              "ht_reliability": 0.5779333592413298,
+              "cct_reliability": 0.6006677567997349,
+              "ht_weight": 0.4903553470088463,
+              "cct_weight": 0.5096446529911537
+            },
+            {
+              "layer": 27,
+              "ht_reliability": 0.5666216349638123,
+              "cct_reliability": 0.6562589047770275,
+              "ht_weight": 0.4633499483799899,
+              "cct_weight": 0.53665005162001
+            },
+            {
+              "layer": 28,
+              "ht_reliability": 0.5689219384525446,
+              "cct_reliability": 0.6743944437955207,
+              "ht_weight": 0.4575842050949778,
+              "cct_weight": 0.5424157949050221
+            },
+            {
+              "layer": 29,
+              "ht_reliability": 0.6028596679629338,
+              "cct_reliability": 0.6793064275239609,
+              "ht_weight": 0.47018843353052603,
+              "cct_weight": 0.529811566469474
+            },
+            {
+              "layer": 30,
+              "ht_reliability": 0.5765688473161698,
+              "cct_reliability": 0.7480925666169568,
+              "ht_weight": 0.4352575241127065,
+              "cct_weight": 0.5647424758872934
+            },
+            {
+              "layer": 31,
+              "ht_reliability": 0.7118907576648984,
+              "cct_reliability": 0.7947537855475683,
+              "ht_weight": 0.4725008037708784,
+              "cct_weight": 0.5274991962291217
+            }
+          ]
+        },
         "metric_definitions": {
           "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
           "timely": "correct issued prefetch fully resident before demand",
@@ -169,6 +1314,235 @@
         "overlap_ms_per_layer": 0.12148691109579689,
         "expert_load_ms": 0.7830392046925468,
         "expert_size_mib": 336.0439702145062,
+        "adaptive_ensemble": {
+          "beta": 0.99,
+          "final_layer_weights": [
+            {
+              "layer": 0,
+              "ht_reliability": 0.5,
+              "cct_reliability": 0.5,
+              "ht_weight": 0.5,
+              "cct_weight": 0.5
+            },
+            {
+              "layer": 1,
+              "ht_reliability": 0.3283696287650295,
+              "cct_reliability": 0.2771698027408123,
+              "ht_weight": 0.5422762113913,
+              "cct_weight": 0.45772378860870006
+            },
+            {
+              "layer": 2,
+              "ht_reliability": 0.3078540484486673,
+              "cct_reliability": 0.337903869803343,
+              "ht_weight": 0.47673290523791256,
+              "cct_weight": 0.5232670947620874
+            },
+            {
+              "layer": 3,
+              "ht_reliability": 0.35875862588796326,
+              "cct_reliability": 0.33384577511738284,
+              "ht_weight": 0.517984906488046,
+              "cct_weight": 0.4820150935119541
+            },
+            {
+              "layer": 4,
+              "ht_reliability": 0.36874196767747913,
+              "cct_reliability": 0.2712839513704153,
+              "ht_weight": 0.5761359918454887,
+              "cct_weight": 0.42386400815451125
+            },
+            {
+              "layer": 5,
+              "ht_reliability": 0.342682347874665,
+              "cct_reliability": 0.2589690908139094,
+              "ht_weight": 0.5695695644335417,
+              "cct_weight": 0.4304304355664584
+            },
+            {
+              "layer": 6,
+              "ht_reliability": 0.4283594694698902,
+              "cct_reliability": 0.28538375179205994,
+              "ht_weight": 0.6001590722115993,
+              "cct_weight": 0.39984092778840075
+            },
+            {
+              "layer": 7,
+              "ht_reliability": 0.42931800327142583,
+              "cct_reliability": 0.2949484891579306,
+              "ht_weight": 0.5927624814333112,
+              "cct_weight": 0.40723751856668877
+            },
+            {
+              "layer": 8,
+              "ht_reliability": 0.47116959989463275,
+              "cct_reliability": 0.37345907473750306,
+              "ht_weight": 0.5578422969121228,
+              "cct_weight": 0.44215770308787705
+            },
+            {
+              "layer": 9,
+              "ht_reliability": 0.4522163601612514,
+              "cct_reliability": 0.3385753836236011,
+              "ht_weight": 0.5718526574352856,
+              "cct_weight": 0.42814734256471443
+            },
+            {
+              "layer": 10,
+              "ht_reliability": 0.3812322484858321,
+              "cct_reliability": 0.33237844520649107,
+              "ht_weight": 0.5342300106424726,
+              "cct_weight": 0.46576998935752734
+            },
+            {
+              "layer": 11,
+              "ht_reliability": 0.4086735746536541,
+              "cct_reliability": 0.48444170891414995,
+              "ht_weight": 0.45758210857291665,
+              "cct_weight": 0.5424178914270834
+            },
+            {
+              "layer": 12,
+              "ht_reliability": 0.43776682117808274,
+              "cct_reliability": 0.4613177829059896,
+              "ht_weight": 0.4869028111365009,
+              "cct_weight": 0.5130971888634992
+            },
+            {
+              "layer": 13,
+              "ht_reliability": 0.42907594762708484,
+              "cct_reliability": 0.35539804458748675,
+              "ht_weight": 0.5469600673641233,
+              "cct_weight": 0.45303993263587666
+            },
+            {
+              "layer": 14,
+              "ht_reliability": 0.4468553632187376,
+              "cct_reliability": 0.44341219239460866,
+              "ht_weight": 0.5019337842890146,
+              "cct_weight": 0.49806621571098547
+            },
+            {
+              "layer": 15,
+              "ht_reliability": 0.39289097542815915,
+              "cct_reliability": 0.41564477294421703,
+              "ht_weight": 0.4859290095942805,
+              "cct_weight": 0.5140709904057195
+            },
+            {
+              "layer": 16,
+              "ht_reliability": 0.3508744141585169,
+              "cct_reliability": 0.45752712461701117,
+              "ht_weight": 0.4340348172641783,
+              "cct_weight": 0.5659651827358216
+            },
+            {
+              "layer": 17,
+              "ht_reliability": 0.3824162396687555,
+              "cct_reliability": 0.4177201797689042,
+              "ht_weight": 0.4779387994081306,
+              "cct_weight": 0.5220612005918693
+            },
+            {
+              "layer": 18,
+              "ht_reliability": 0.3105189333357707,
+              "cct_reliability": 0.4199477916058415,
+              "ht_weight": 0.4250966166331412,
+              "cct_weight": 0.5749033833668589
+            },
+            {
+              "layer": 19,
+              "ht_reliability": 0.3485384586839374,
+              "cct_reliability": 0.40962484386434056,
+              "ht_weight": 0.4597142297872474,
+              "cct_weight": 0.5402857702127527
+            },
+            {
+              "layer": 20,
+              "ht_reliability": 0.37325783791141043,
+              "cct_reliability": 0.38695966687643796,
+              "ht_weight": 0.4909882179253086,
+              "cct_weight": 0.5090117820746914
+            },
+            {
+              "layer": 21,
+              "ht_reliability": 0.40553482243381095,
+              "cct_reliability": 0.2899899954961131,
+              "ht_weight": 0.5830630510652313,
+              "cct_weight": 0.4169369489347688
+            },
+            {
+              "layer": 22,
+              "ht_reliability": 0.39514524225691683,
+              "cct_reliability": 0.2905783220349376,
+              "ht_weight": 0.5762456809618066,
+              "cct_weight": 0.4237543190381934
+            },
+            {
+              "layer": 23,
+              "ht_reliability": 0.39439860557551637,
+              "cct_reliability": 0.36300697897250733,
+              "ht_weight": 0.5207231285611275,
+              "cct_weight": 0.47927687143887265
+            },
+            {
+              "layer": 24,
+              "ht_reliability": 0.3435310963645843,
+              "cct_reliability": 0.28413844028399404,
+              "ht_weight": 0.5473120428925988,
+              "cct_weight": 0.4526879571074013
+            },
+            {
+              "layer": 25,
+              "ht_reliability": 0.39105801026706005,
+              "cct_reliability": 0.3029668013240378,
+              "ht_weight": 0.5634640199253592,
+              "cct_weight": 0.4365359800746408
+            },
+            {
+              "layer": 26,
+              "ht_reliability": 0.370898512837392,
+              "cct_reliability": 0.35044059525754273,
+              "ht_weight": 0.514180513263643,
+              "cct_weight": 0.485819486736357
+            },
+            {
+              "layer": 27,
+              "ht_reliability": 0.366420373571314,
+              "cct_reliability": 0.35989429744599827,
+              "ht_weight": 0.5044925955551572,
+              "cct_weight": 0.49550740444484276
+            },
+            {
+              "layer": 28,
+              "ht_reliability": 0.3309663697817246,
+              "cct_reliability": 0.40038611575891103,
+              "ht_weight": 0.45254015857629204,
+              "cct_weight": 0.5474598414237078
+            },
+            {
+              "layer": 29,
+              "ht_reliability": 0.36771927011857947,
+              "cct_reliability": 0.4205010726516348,
+              "ht_weight": 0.466518370772091,
+              "cct_weight": 0.533481629227909
+            },
+            {
+              "layer": 30,
+              "ht_reliability": 0.4275601135674175,
+              "cct_reliability": 0.48640654811424056,
+              "ht_weight": 0.4678071219586127,
+              "cct_weight": 0.5321928780413873
+            },
+            {
+              "layer": 31,
+              "ht_reliability": 0.48403693531000846,
+              "cct_reliability": 0.6034910548687996,
+              "ht_weight": 0.4450799792568324,
+              "cct_weight": 0.5549200207431677
+            }
+          ]
+        },
         "metric_definitions": {
           "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
           "timely": "correct issued prefetch fully resident before demand",
@@ -198,6 +1572,235 @@
         "overlap_ms_per_layer": 0.48594764438318755,
         "expert_load_ms": 0.7830392046925468,
         "expert_size_mib": 336.0439702145062,
+        "adaptive_ensemble": {
+          "beta": 0.99,
+          "final_layer_weights": [
+            {
+              "layer": 0,
+              "ht_reliability": 0.5,
+              "cct_reliability": 0.5,
+              "ht_weight": 0.5,
+              "cct_weight": 0.5
+            },
+            {
+              "layer": 1,
+              "ht_reliability": 0.3283696287650295,
+              "cct_reliability": 0.2771698027408123,
+              "ht_weight": 0.5422762113913,
+              "cct_weight": 0.45772378860870006
+            },
+            {
+              "layer": 2,
+              "ht_reliability": 0.3078540484486673,
+              "cct_reliability": 0.337903869803343,
+              "ht_weight": 0.47673290523791256,
+              "cct_weight": 0.5232670947620874
+            },
+            {
+              "layer": 3,
+              "ht_reliability": 0.35875862588796326,
+              "cct_reliability": 0.33384577511738284,
+              "ht_weight": 0.517984906488046,
+              "cct_weight": 0.4820150935119541
+            },
+            {
+              "layer": 4,
+              "ht_reliability": 0.36874196767747913,
+              "cct_reliability": 0.2712839513704153,
+              "ht_weight": 0.5761359918454887,
+              "cct_weight": 0.42386400815451125
+            },
+            {
+              "layer": 5,
+              "ht_reliability": 0.342682347874665,
+              "cct_reliability": 0.2589690908139094,
+              "ht_weight": 0.5695695644335417,
+              "cct_weight": 0.4304304355664584
+            },
+            {
+              "layer": 6,
+              "ht_reliability": 0.4283594694698902,
+              "cct_reliability": 0.28538375179205994,
+              "ht_weight": 0.6001590722115993,
+              "cct_weight": 0.39984092778840075
+            },
+            {
+              "layer": 7,
+              "ht_reliability": 0.42931800327142583,
+              "cct_reliability": 0.2949484891579306,
+              "ht_weight": 0.5927624814333112,
+              "cct_weight": 0.40723751856668877
+            },
+            {
+              "layer": 8,
+              "ht_reliability": 0.47116959989463275,
+              "cct_reliability": 0.37345907473750306,
+              "ht_weight": 0.5578422969121228,
+              "cct_weight": 0.44215770308787705
+            },
+            {
+              "layer": 9,
+              "ht_reliability": 0.4522163601612514,
+              "cct_reliability": 0.3385753836236011,
+              "ht_weight": 0.5718526574352856,
+              "cct_weight": 0.42814734256471443
+            },
+            {
+              "layer": 10,
+              "ht_reliability": 0.3812322484858321,
+              "cct_reliability": 0.33237844520649107,
+              "ht_weight": 0.5342300106424726,
+              "cct_weight": 0.46576998935752734
+            },
+            {
+              "layer": 11,
+              "ht_reliability": 0.4086735746536541,
+              "cct_reliability": 0.48444170891414995,
+              "ht_weight": 0.45758210857291665,
+              "cct_weight": 0.5424178914270834
+            },
+            {
+              "layer": 12,
+              "ht_reliability": 0.43776682117808274,
+              "cct_reliability": 0.4613177829059896,
+              "ht_weight": 0.4869028111365009,
+              "cct_weight": 0.5130971888634992
+            },
+            {
+              "layer": 13,
+              "ht_reliability": 0.42907594762708484,
+              "cct_reliability": 0.35539804458748675,
+              "ht_weight": 0.5469600673641233,
+              "cct_weight": 0.45303993263587666
+            },
+            {
+              "layer": 14,
+              "ht_reliability": 0.4468553632187376,
+              "cct_reliability": 0.44341219239460866,
+              "ht_weight": 0.5019337842890146,
+              "cct_weight": 0.49806621571098547
+            },
+            {
+              "layer": 15,
+              "ht_reliability": 0.39289097542815915,
+              "cct_reliability": 0.41564477294421703,
+              "ht_weight": 0.4859290095942805,
+              "cct_weight": 0.5140709904057195
+            },
+            {
+              "layer": 16,
+              "ht_reliability": 0.3508744141585169,
+              "cct_reliability": 0.45752712461701117,
+              "ht_weight": 0.4340348172641783,
+              "cct_weight": 0.5659651827358216
+            },
+            {
+              "layer": 17,
+              "ht_reliability": 0.3824162396687555,
+              "cct_reliability": 0.4177201797689042,
+              "ht_weight": 0.4779387994081306,
+              "cct_weight": 0.5220612005918693
+            },
+            {
+              "layer": 18,
+              "ht_reliability": 0.3105189333357707,
+              "cct_reliability": 0.4199477916058415,
+              "ht_weight": 0.4250966166331412,
+              "cct_weight": 0.5749033833668589
+            },
+            {
+              "layer": 19,
+              "ht_reliability": 0.3485384586839374,
+              "cct_reliability": 0.40962484386434056,
+              "ht_weight": 0.4597142297872474,
+              "cct_weight": 0.5402857702127527
+            },
+            {
+              "layer": 20,
+              "ht_reliability": 0.37325783791141043,
+              "cct_reliability": 0.38695966687643796,
+              "ht_weight": 0.4909882179253086,
+              "cct_weight": 0.5090117820746914
+            },
+            {
+              "layer": 21,
+              "ht_reliability": 0.40553482243381095,
+              "cct_reliability": 0.2899899954961131,
+              "ht_weight": 0.5830630510652313,
+              "cct_weight": 0.4169369489347688
+            },
+            {
+              "layer": 22,
+              "ht_reliability": 0.39514524225691683,
+              "cct_reliability": 0.2905783220349376,
+              "ht_weight": 0.5762456809618066,
+              "cct_weight": 0.4237543190381934
+            },
+            {
+              "layer": 23,
+              "ht_reliability": 0.39439860557551637,
+              "cct_reliability": 0.36300697897250733,
+              "ht_weight": 0.5207231285611275,
+              "cct_weight": 0.47927687143887265
+            },
+            {
+              "layer": 24,
+              "ht_reliability": 0.3435310963645843,
+              "cct_reliability": 0.28413844028399404,
+              "ht_weight": 0.5473120428925988,
+              "cct_weight": 0.4526879571074013
+            },
+            {
+              "layer": 25,
+              "ht_reliability": 0.39105801026706005,
+              "cct_reliability": 0.3029668013240378,
+              "ht_weight": 0.5634640199253592,
+              "cct_weight": 0.4365359800746408
+            },
+            {
+              "layer": 26,
+              "ht_reliability": 0.370898512837392,
+              "cct_reliability": 0.35044059525754273,
+              "ht_weight": 0.514180513263643,
+              "cct_weight": 0.485819486736357
+            },
+            {
+              "layer": 27,
+              "ht_reliability": 0.366420373571314,
+              "cct_reliability": 0.35989429744599827,
+              "ht_weight": 0.5044925955551572,
+              "cct_weight": 0.49550740444484276
+            },
+            {
+              "layer": 28,
+              "ht_reliability": 0.3309663697817246,
+              "cct_reliability": 0.40038611575891103,
+              "ht_weight": 0.45254015857629204,
+              "cct_weight": 0.5474598414237078
+            },
+            {
+              "layer": 29,
+              "ht_reliability": 0.36771927011857947,
+              "cct_reliability": 0.4205010726516348,
+              "ht_weight": 0.466518370772091,
+              "cct_weight": 0.533481629227909
+            },
+            {
+              "layer": 30,
+              "ht_reliability": 0.4275601135674175,
+              "cct_reliability": 0.48640654811424056,
+              "ht_weight": 0.4678071219586127,
+              "cct_weight": 0.5321928780413873
+            },
+            {
+              "layer": 31,
+              "ht_reliability": 0.48403693531000846,
+              "cct_reliability": 0.6034910548687996,
+              "ht_weight": 0.4450799792568324,
+              "cct_weight": 0.5549200207431677
+            }
+          ]
+        },
         "metric_definitions": {
           "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
           "timely": "correct issued prefetch fully resident before demand",
@@ -227,6 +1830,235 @@
         "overlap_ms_per_layer": 0.9718952887663751,
         "expert_load_ms": 0.7830392046925468,
         "expert_size_mib": 336.0439702145062,
+        "adaptive_ensemble": {
+          "beta": 0.99,
+          "final_layer_weights": [
+            {
+              "layer": 0,
+              "ht_reliability": 0.5,
+              "cct_reliability": 0.5,
+              "ht_weight": 0.5,
+              "cct_weight": 0.5
+            },
+            {
+              "layer": 1,
+              "ht_reliability": 0.3283696287650295,
+              "cct_reliability": 0.2771698027408123,
+              "ht_weight": 0.5422762113913,
+              "cct_weight": 0.45772378860870006
+            },
+            {
+              "layer": 2,
+              "ht_reliability": 0.3078540484486673,
+              "cct_reliability": 0.337903869803343,
+              "ht_weight": 0.47673290523791256,
+              "cct_weight": 0.5232670947620874
+            },
+            {
+              "layer": 3,
+              "ht_reliability": 0.35875862588796326,
+              "cct_reliability": 0.33384577511738284,
+              "ht_weight": 0.517984906488046,
+              "cct_weight": 0.4820150935119541
+            },
+            {
+              "layer": 4,
+              "ht_reliability": 0.36874196767747913,
+              "cct_reliability": 0.2712839513704153,
+              "ht_weight": 0.5761359918454887,
+              "cct_weight": 0.42386400815451125
+            },
+            {
+              "layer": 5,
+              "ht_reliability": 0.342682347874665,
+              "cct_reliability": 0.2589690908139094,
+              "ht_weight": 0.5695695644335417,
+              "cct_weight": 0.4304304355664584
+            },
+            {
+              "layer": 6,
+              "ht_reliability": 0.4283594694698902,
+              "cct_reliability": 0.28538375179205994,
+              "ht_weight": 0.6001590722115993,
+              "cct_weight": 0.39984092778840075
+            },
+            {
+              "layer": 7,
+              "ht_reliability": 0.42931800327142583,
+              "cct_reliability": 0.2949484891579306,
+              "ht_weight": 0.5927624814333112,
+              "cct_weight": 0.40723751856668877
+            },
+            {
+              "layer": 8,
+              "ht_reliability": 0.47116959989463275,
+              "cct_reliability": 0.37345907473750306,
+              "ht_weight": 0.5578422969121228,
+              "cct_weight": 0.44215770308787705
+            },
+            {
+              "layer": 9,
+              "ht_reliability": 0.4522163601612514,
+              "cct_reliability": 0.3385753836236011,
+              "ht_weight": 0.5718526574352856,
+              "cct_weight": 0.42814734256471443
+            },
+            {
+              "layer": 10,
+              "ht_reliability": 0.3812322484858321,
+              "cct_reliability": 0.33237844520649107,
+              "ht_weight": 0.5342300106424726,
+              "cct_weight": 0.46576998935752734
+            },
+            {
+              "layer": 11,
+              "ht_reliability": 0.4086735746536541,
+              "cct_reliability": 0.48444170891414995,
+              "ht_weight": 0.45758210857291665,
+              "cct_weight": 0.5424178914270834
+            },
+            {
+              "layer": 12,
+              "ht_reliability": 0.43776682117808274,
+              "cct_reliability": 0.4613177829059896,
+              "ht_weight": 0.4869028111365009,
+              "cct_weight": 0.5130971888634992
+            },
+            {
+              "layer": 13,
+              "ht_reliability": 0.42907594762708484,
+              "cct_reliability": 0.35539804458748675,
+              "ht_weight": 0.5469600673641233,
+              "cct_weight": 0.45303993263587666
+            },
+            {
+              "layer": 14,
+              "ht_reliability": 0.4468553632187376,
+              "cct_reliability": 0.44341219239460866,
+              "ht_weight": 0.5019337842890146,
+              "cct_weight": 0.49806621571098547
+            },
+            {
+              "layer": 15,
+              "ht_reliability": 0.39289097542815915,
+              "cct_reliability": 0.41564477294421703,
+              "ht_weight": 0.4859290095942805,
+              "cct_weight": 0.5140709904057195
+            },
+            {
+              "layer": 16,
+              "ht_reliability": 0.3508744141585169,
+              "cct_reliability": 0.45752712461701117,
+              "ht_weight": 0.4340348172641783,
+              "cct_weight": 0.5659651827358216
+            },
+            {
+              "layer": 17,
+              "ht_reliability": 0.3824162396687555,
+              "cct_reliability": 0.4177201797689042,
+              "ht_weight": 0.4779387994081306,
+              "cct_weight": 0.5220612005918693
+            },
+            {
+              "layer": 18,
+              "ht_reliability": 0.3105189333357707,
+              "cct_reliability": 0.4199477916058415,
+              "ht_weight": 0.4250966166331412,
+              "cct_weight": 0.5749033833668589
+            },
+            {
+              "layer": 19,
+              "ht_reliability": 0.3485384586839374,
+              "cct_reliability": 0.40962484386434056,
+              "ht_weight": 0.4597142297872474,
+              "cct_weight": 0.5402857702127527
+            },
+            {
+              "layer": 20,
+              "ht_reliability": 0.37325783791141043,
+              "cct_reliability": 0.38695966687643796,
+              "ht_weight": 0.4909882179253086,
+              "cct_weight": 0.5090117820746914
+            },
+            {
+              "layer": 21,
+              "ht_reliability": 0.40553482243381095,
+              "cct_reliability": 0.2899899954961131,
+              "ht_weight": 0.5830630510652313,
+              "cct_weight": 0.4169369489347688
+            },
+            {
+              "layer": 22,
+              "ht_reliability": 0.39514524225691683,
+              "cct_reliability": 0.2905783220349376,
+              "ht_weight": 0.5762456809618066,
+              "cct_weight": 0.4237543190381934
+            },
+            {
+              "layer": 23,
+              "ht_reliability": 0.39439860557551637,
+              "cct_reliability": 0.36300697897250733,
+              "ht_weight": 0.5207231285611275,
+              "cct_weight": 0.47927687143887265
+            },
+            {
+              "layer": 24,
+              "ht_reliability": 0.3435310963645843,
+              "cct_reliability": 0.28413844028399404,
+              "ht_weight": 0.5473120428925988,
+              "cct_weight": 0.4526879571074013
+            },
+            {
+              "layer": 25,
+              "ht_reliability": 0.39105801026706005,
+              "cct_reliability": 0.3029668013240378,
+              "ht_weight": 0.5634640199253592,
+              "cct_weight": 0.4365359800746408
+            },
+            {
+              "layer": 26,
+              "ht_reliability": 0.370898512837392,
+              "cct_reliability": 0.35044059525754273,
+              "ht_weight": 0.514180513263643,
+              "cct_weight": 0.485819486736357
+            },
+            {
+              "layer": 27,
+              "ht_reliability": 0.366420373571314,
+              "cct_reliability": 0.35989429744599827,
+              "ht_weight": 0.5044925955551572,
+              "cct_weight": 0.49550740444484276
+            },
+            {
+              "layer": 28,
+              "ht_reliability": 0.3309663697817246,
+              "cct_reliability": 0.40038611575891103,
+              "ht_weight": 0.45254015857629204,
+              "cct_weight": 0.5474598414237078
+            },
+            {
+              "layer": 29,
+              "ht_reliability": 0.36771927011857947,
+              "cct_reliability": 0.4205010726516348,
+              "ht_weight": 0.466518370772091,
+              "cct_weight": 0.533481629227909
+            },
+            {
+              "layer": 30,
+              "ht_reliability": 0.4275601135674175,
+              "cct_reliability": 0.48640654811424056,
+              "ht_weight": 0.4678071219586127,
+              "cct_weight": 0.5321928780413873
+            },
+            {
+              "layer": 31,
+              "ht_reliability": 0.48403693531000846,
+              "cct_reliability": 0.6034910548687996,
+              "ht_weight": 0.4450799792568324,
+              "cct_weight": 0.5549200207431677
+            }
+          ]
+        },
         "metric_definitions": {
           "prefetch_coverage": "eligible demand requests receiving transferred prefetch bytes",
           "timely": "correct issued prefetch fully resident before demand",
@@ -243,6 +2075,7 @@
       "dimension": "hbm_capacity_experts",
       "value": 8,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -282,6 +2115,7 @@
       "dimension": "hbm_capacity_experts",
       "value": 8,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -321,6 +2155,7 @@
       "dimension": "hbm_capacity_experts",
       "value": 8,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -358,8 +2193,89 @@
     },
     {
       "dimension": "hbm_capacity_experts",
+      "value": 8,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 8,
+      "hbm_capacity_mib": 2688.3517617160496,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3622806451612903,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6377193548340602,
+      "unused_prefetch_rate": 0.6377193548387097,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 47.38574299541919,
+      "expert_load_latency_ms_per_token": 47.38574299541919,
+      "mean_token_latency_ms": 56.13691068668371,
+      "normalized_latency_ms_per_sequence": 56.13691068668371,
+      "stdev_token_latency_ms": 0.9771574478047835,
+      "demand_transfer_experts_per_token": 60.51516030318471,
+      "prefetch_transfer_experts_per_token": 9.619171610956794,
+      "unused_prefetch_experts_per_token": 6.134331913777474,
+      "total_transfer_experts_per_token": 70.1343319141415,
+      "evictions_per_token": 103.5378,
+      "prefetch_evictions_per_token": 39.5386,
+      "speedup_vs_baseline": 1.048609124932412,
+      "latency_reduction_pct": 4.635580959258304,
+      "additional_traffic_pct_vs_baseline": 9.584893614370147,
+      "dynamic_energy_j": 3.6017107784697857,
+      "dynamic_energy_change_pct_vs_baseline": 6.875612416622669,
+      "total_energy_350w_j": 20.186720826866505,
+      "total_energy_saving_350w_pct": 3.4593832529534465
+    },
+    {
+      "dimension": "hbm_capacity_experts",
+      "value": 8,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 8,
+      "hbm_capacity_mib": 2688.3517617160496,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.359591935483871,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6646897530562541,
+      "unused_prefetch_rate": 0.66463952153747,
+      "hbm_hit_rate": 0.002596875,
+      "exposed_stall_ms_per_token": 47.45878873839197,
+      "expert_load_latency_ms_per_token": 47.45878873839197,
+      "mean_token_latency_ms": 56.209956429671394,
+      "normalized_latency_ms_per_sequence": 56.209956429671394,
+      "stdev_token_latency_ms": 1.027099224989522,
+      "demand_transfer_experts_per_token": 60.60844521482311,
+      "prefetch_transfer_experts_per_token": 9.619016463026018,
+      "unused_prefetch_experts_per_token": 6.393661677452807,
+      "total_transfer_experts_per_token": 70.22746167784913,
+      "evictions_per_token": 104.773,
+      "prefetch_evictions_per_token": 40.94,
+      "speedup_vs_baseline": 1.0472464404989135,
+      "latency_reduction_pct": 4.511492106519354,
+      "additional_traffic_pct_vs_baseline": 9.730408870161357,
+      "dynamic_energy_j": 3.6052285111755387,
+      "dynamic_energy_change_pct_vs_baseline": 6.979996099924707,
+      "total_energy_350w_j": 20.21580456961273,
+      "total_energy_saving_350w_pct": 3.3202936758936588
+    },
+    {
+      "dimension": "hbm_capacity_experts",
       "value": 16,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -399,6 +2315,7 @@
       "dimension": "hbm_capacity_experts",
       "value": 16,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -438,6 +2355,7 @@
       "dimension": "hbm_capacity_experts",
       "value": 16,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -475,8 +2393,89 @@
     },
     {
       "dimension": "hbm_capacity_experts",
+      "value": 16,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3622806451612903,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6377193548340602,
+      "unused_prefetch_rate": 0.6377193548387097,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 47.38574299541919,
+      "expert_load_latency_ms_per_token": 47.38574299541919,
+      "mean_token_latency_ms": 56.13691068668371,
+      "normalized_latency_ms_per_sequence": 56.13691068668371,
+      "stdev_token_latency_ms": 0.9771574478047835,
+      "demand_transfer_experts_per_token": 60.51516030318471,
+      "prefetch_transfer_experts_per_token": 9.619171610956794,
+      "unused_prefetch_experts_per_token": 6.134331913777474,
+      "total_transfer_experts_per_token": 70.1343319141415,
+      "evictions_per_token": 103.537,
+      "prefetch_evictions_per_token": 39.5386,
+      "speedup_vs_baseline": 1.048609124932412,
+      "latency_reduction_pct": 4.635580959258304,
+      "additional_traffic_pct_vs_baseline": 9.584893614370147,
+      "dynamic_energy_j": 3.6017107784697857,
+      "dynamic_energy_change_pct_vs_baseline": 6.875612416622669,
+      "total_energy_350w_j": 20.186720826866505,
+      "total_energy_saving_350w_pct": 3.4593832529534465
+    },
+    {
+      "dimension": "hbm_capacity_experts",
+      "value": 16,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3303048387096774,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6588020809701532,
+      "unused_prefetch_rate": 0.6580999816178079,
+      "hbm_hit_rate": 0.0320140625,
+      "exposed_stall_ms_per_token": 45.94775029366121,
+      "expert_load_latency_ms_per_token": 45.94775029366121,
+      "mean_token_latency_ms": 54.69891798493471,
+      "normalized_latency_ms_per_sequence": 54.69891798493471,
+      "stdev_token_latency_ms": 1.7723604181046029,
+      "demand_transfer_experts_per_token": 58.6787353922602,
+      "prefetch_transfer_experts_per_token": 9.590810569478094,
+      "unused_prefetch_experts_per_token": 6.31844596136271,
+      "total_transfer_experts_per_token": 68.2695459617383,
+      "evictions_per_token": 99.5405,
+      "prefetch_evictions_per_token": 37.591,
+      "speedup_vs_baseline": 1.0761762564989912,
+      "latency_reduction_pct": 7.078418245985764,
+      "additional_traffic_pct_vs_baseline": 6.671165563779378,
+      "dynamic_energy_j": 3.531273377226175,
+      "dynamic_energy_change_pct_vs_baseline": 4.785483347973621,
+      "total_energy_350w_j": 19.612985980007597,
+      "total_energy_saving_350w_pct": 6.203202639969215
+    },
+    {
+      "dimension": "hbm_capacity_experts",
       "value": 32,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -516,6 +2515,7 @@
       "dimension": "hbm_capacity_experts",
       "value": 32,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -555,6 +2555,7 @@
       "dimension": "hbm_capacity_experts",
       "value": 32,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -591,9 +2592,90 @@
       "total_energy_saving_350w_pct": 14.536948891114776
     },
     {
+      "dimension": "hbm_capacity_experts",
+      "value": 32,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 32,
+      "hbm_capacity_mib": 10753.407046864198,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3622806451612903,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6377193548340602,
+      "unused_prefetch_rate": 0.6377193548387097,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 47.38574299541919,
+      "expert_load_latency_ms_per_token": 47.38574299541919,
+      "mean_token_latency_ms": 56.13691068668371,
+      "normalized_latency_ms_per_sequence": 56.13691068668371,
+      "stdev_token_latency_ms": 0.9771574478047835,
+      "demand_transfer_experts_per_token": 60.51516030318471,
+      "prefetch_transfer_experts_per_token": 9.619171610956794,
+      "unused_prefetch_experts_per_token": 6.134331913777474,
+      "total_transfer_experts_per_token": 70.1343319141415,
+      "evictions_per_token": 103.5354,
+      "prefetch_evictions_per_token": 39.5386,
+      "speedup_vs_baseline": 1.048609124932412,
+      "latency_reduction_pct": 4.635580959258304,
+      "additional_traffic_pct_vs_baseline": 9.584893614370147,
+      "dynamic_energy_j": 3.6017107784697857,
+      "dynamic_energy_change_pct_vs_baseline": 6.875612416622669,
+      "total_energy_350w_j": 20.186720826866505,
+      "total_energy_saving_350w_pct": 3.4593832529534465
+    },
+    {
+      "dimension": "hbm_capacity_experts",
+      "value": 32,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 32,
+      "hbm_capacity_mib": 10753.407046864198,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.2902064516129032,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.636480783369365,
+      "unused_prefetch_rate": 0.6358090290077538,
+      "hbm_hit_rate": 0.078065625,
+      "exposed_stall_ms_per_token": 43.535966793237634,
+      "expert_load_latency_ms_per_token": 43.535966793237634,
+      "mean_token_latency_ms": 52.28713448450169,
+      "normalized_latency_ms_per_sequence": 52.28713448450169,
+      "stdev_token_latency_ms": 2.6696437688049626,
+      "demand_transfer_experts_per_token": 55.59870633878631,
+      "prefetch_transfer_experts_per_token": 9.36702519636374,
+      "unused_prefetch_experts_per_token": 5.961931534822172,
+      "total_transfer_experts_per_token": 64.96573153515004,
+      "evictions_per_token": 91.3086,
+      "prefetch_evictions_per_token": 32.308,
+      "speedup_vs_baseline": 1.1258156977223646,
+      "latency_reduction_pct": 11.175514604824036,
+      "additional_traffic_pct_vs_baseline": 1.508955522304766,
+      "dynamic_energy_j": 3.4064804474531236,
+      "dynamic_energy_change_pct_vs_baseline": 1.0824317663510956,
+      "total_energy_350w_j": 18.644068825086293,
+      "total_energy_saving_350w_pct": 10.836934909571127
+    },
+    {
       "dimension": "candidate_budget",
       "value": 1,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -633,6 +2715,7 @@
       "dimension": "candidate_budget",
       "value": 1,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -672,6 +2755,7 @@
       "dimension": "candidate_budget",
       "value": 1,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -709,8 +2793,89 @@
     },
     {
       "dimension": "candidate_budget",
+      "value": 1,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.4320935483870968,
+      "prediction_recall": 0.2160467741935484,
+      "prefetch_coverage": 0.2160467741935484,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.5679064516108608,
+      "unused_prefetch_rate": 0.5679064516129032,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 46.85989904937927,
+      "expert_load_latency_ms_per_token": 46.85989904937927,
+      "mean_token_latency_ms": 55.61106674069651,
+      "normalized_latency_ms_per_sequence": 55.61106674069651,
+      "stdev_token_latency_ms": 1.1144993365198457,
+      "demand_transfer_experts_per_token": 59.84361800663096,
+      "prefetch_transfer_experts_per_token": 9.619171610833341,
+      "unused_prefetch_experts_per_token": 5.462789616944291,
+      "total_transfer_experts_per_token": 69.4627896174643,
+      "evictions_per_token": 81.6035,
+      "prefetch_evictions_per_token": 17.6051,
+      "speedup_vs_baseline": 1.0585245031542279,
+      "latency_reduction_pct": 5.528875616939855,
+      "additional_traffic_pct_vs_baseline": 8.535608775826153,
+      "dynamic_energy_j": 3.5763450285068212,
+      "dynamic_energy_change_pct_vs_baseline": 6.122920091102146,
+      "total_energy_350w_j": 19.977309695789565,
+      "total_energy_saving_350w_pct": 4.460867343472898
+    },
+    {
+      "dimension": "candidate_budget",
+      "value": 1,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.4320935483870968,
+      "prediction_recall": 0.2160467741935484,
+      "prefetch_coverage": 0.18761451612903227,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.596031544136431,
+      "unused_prefetch_rate": 0.5960241705654423,
+      "hbm_hit_rate": 0.041884375,
+      "exposed_stall_ms_per_token": 45.35318144364074,
+      "expert_load_latency_ms_per_token": 45.35318144364074,
+      "mean_token_latency_ms": 54.10434913495422,
+      "normalized_latency_ms_per_sequence": 54.10434913495422,
+      "stdev_token_latency_ms": 1.8258151383162808,
+      "demand_transfer_experts_per_token": 57.91942622067252,
+      "prefetch_transfer_experts_per_token": 8.416433834004046,
+      "unused_prefetch_experts_per_token": 5.016460054203534,
+      "total_transfer_experts_per_token": 66.33586005467656,
+      "evictions_per_token": 77.4843,
+      "prefetch_evictions_per_token": 16.1665,
+      "speedup_vs_baseline": 1.088002678763251,
+      "latency_reduction_pct": 8.088461589385519,
+      "additional_traffic_pct_vs_baseline": 3.6497813340361125,
+      "dynamic_energy_j": 3.4582334608007574,
+      "dynamic_energy_change_pct_vs_baseline": 2.618128366144141,
+      "total_energy_350w_j": 19.331846966075016,
+      "total_energy_saving_350w_pct": 7.547716889187221
+    },
+    {
+      "dimension": "candidate_budget",
       "value": 2,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -750,6 +2915,7 @@
       "dimension": "candidate_budget",
       "value": 2,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -789,6 +2955,7 @@
       "dimension": "candidate_budget",
       "value": 2,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -826,8 +2993,89 @@
     },
     {
       "dimension": "candidate_budget",
+      "value": 2,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3622806451612903,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6377193548340602,
+      "unused_prefetch_rate": 0.6377193548387097,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 47.38574299541919,
+      "expert_load_latency_ms_per_token": 47.38574299541919,
+      "mean_token_latency_ms": 56.13691068668371,
+      "normalized_latency_ms_per_sequence": 56.13691068668371,
+      "stdev_token_latency_ms": 0.9771574478047835,
+      "demand_transfer_experts_per_token": 60.51516030318471,
+      "prefetch_transfer_experts_per_token": 9.619171610956794,
+      "unused_prefetch_experts_per_token": 6.134331913777474,
+      "total_transfer_experts_per_token": 70.1343319141415,
+      "evictions_per_token": 103.537,
+      "prefetch_evictions_per_token": 39.5386,
+      "speedup_vs_baseline": 1.048609124932412,
+      "latency_reduction_pct": 4.635580959258304,
+      "additional_traffic_pct_vs_baseline": 9.584893614370147,
+      "dynamic_energy_j": 3.6017107784697857,
+      "dynamic_energy_change_pct_vs_baseline": 6.875612416622669,
+      "total_energy_350w_j": 20.186720826866505,
+      "total_energy_saving_350w_pct": 3.4593832529534465
+    },
+    {
+      "dimension": "candidate_budget",
+      "value": 2,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3303048387096774,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6588020809701532,
+      "unused_prefetch_rate": 0.6580999816178079,
+      "hbm_hit_rate": 0.0320140625,
+      "exposed_stall_ms_per_token": 45.94775029366121,
+      "expert_load_latency_ms_per_token": 45.94775029366121,
+      "mean_token_latency_ms": 54.69891798493471,
+      "normalized_latency_ms_per_sequence": 54.69891798493471,
+      "stdev_token_latency_ms": 1.7723604181046029,
+      "demand_transfer_experts_per_token": 58.6787353922602,
+      "prefetch_transfer_experts_per_token": 9.590810569478094,
+      "unused_prefetch_experts_per_token": 6.31844596136271,
+      "total_transfer_experts_per_token": 68.2695459617383,
+      "evictions_per_token": 99.5405,
+      "prefetch_evictions_per_token": 37.591,
+      "speedup_vs_baseline": 1.0761762564989912,
+      "latency_reduction_pct": 7.078418245985764,
+      "additional_traffic_pct_vs_baseline": 6.671165563779378,
+      "dynamic_energy_j": 3.531273377226175,
+      "dynamic_energy_change_pct_vs_baseline": 4.785483347973621,
+      "total_energy_350w_j": 19.612985980007597,
+      "total_energy_saving_350w_pct": 6.203202639969215
+    },
+    {
+      "dimension": "candidate_budget",
       "value": 4,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -867,6 +3115,7 @@
       "dimension": "candidate_budget",
       "value": 4,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -906,6 +3155,7 @@
       "dimension": "candidate_budget",
       "value": 4,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -942,9 +3192,90 @@
       "total_energy_saving_350w_pct": 6.1764436920697845
     },
     {
+      "dimension": "candidate_budget",
+      "value": 4,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3478532258064516,
+      "prediction_recall": 0.6957064516129032,
+      "prefetch_coverage": 0.6957064516129032,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.652146774201465,
+      "unused_prefetch_rate": 0.6521467741935484,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 47.4944130374189,
+      "expert_load_latency_ms_per_token": 47.4944130374189,
+      "mean_token_latency_ms": 56.24558072865824,
+      "normalized_latency_ms_per_sequence": 56.24558072865824,
+      "stdev_token_latency_ms": 0.3232356558894225,
+      "demand_transfer_experts_per_token": 60.65394012522938,
+      "prefetch_transfer_experts_per_token": 9.619171610868825,
+      "unused_prefetch_experts_per_token": 6.273111736518414,
+      "total_transfer_experts_per_token": 70.27311173609822,
+      "evictions_per_token": 144.8646,
+      "prefetch_evictions_per_token": 80.8662,
+      "speedup_vs_baseline": 1.0465831453595278,
+      "latency_reduction_pct": 4.450974159680855,
+      "additional_traffic_pct_vs_baseline": 9.801737086174594,
+      "dynamic_energy_j": 3.6069528224647462,
+      "dynamic_energy_change_pct_vs_baseline": 7.031162569518151,
+      "total_energy_350w_j": 20.22999738556136,
+      "total_energy_saving_350w_pct": 3.252418203853904
+    },
+    {
+      "dimension": "candidate_budget",
+      "value": 4,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3478532258064516,
+      "prediction_recall": 0.6957064516129032,
+      "prefetch_coverage": 0.6685322580645161,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.666939247318284,
+      "unused_prefetch_rate": 0.6645435421257826,
+      "hbm_hit_rate": 0.027259375,
+      "exposed_stall_ms_per_token": 46.239742536631354,
+      "expert_load_latency_ms_per_token": 46.239742536631354,
+      "mean_token_latency_ms": 54.99091022788157,
+      "normalized_latency_ms_per_sequence": 54.99091022788157,
+      "stdev_token_latency_ms": 1.152128892596918,
+      "demand_transfer_experts_per_token": 59.05163146280736,
+      "prefetch_transfer_experts_per_token": 9.619171610877519,
+      "unused_prefetch_experts_per_token": 6.4154030739840575,
+      "total_transfer_experts_per_token": 68.67080307368488,
+      "evictions_per_token": 141.9234,
+      "prefetch_evictions_per_token": 79.6696,
+      "speedup_vs_baseline": 1.0704619463041043,
+      "latency_reduction_pct": 6.582386842183634,
+      "additional_traffic_pct_vs_baseline": 7.29812980118748,
+      "dynamic_energy_j": 3.5464298128265237,
+      "dynamic_energy_change_pct_vs_baseline": 5.235228881824784,
+      "total_energy_350w_j": 19.730339700647498,
+      "total_energy_saving_350w_pct": 5.641972281393177
+    },
+    {
       "dimension": "overlap_multiplier",
       "value": 0.5,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -984,6 +3315,7 @@
       "dimension": "overlap_multiplier",
       "value": 0.5,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -1023,6 +3355,7 @@
       "dimension": "overlap_multiplier",
       "value": 0.5,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -1060,8 +3393,89 @@
     },
     {
       "dimension": "overlap_multiplier",
+      "value": 0.5,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3622806451612903,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6377193548340602,
+      "unused_prefetch_rate": 0.6377193548387097,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 48.750126047788825,
+      "expert_load_latency_ms_per_token": 48.750126047788825,
+      "mean_token_latency_ms": 57.50129373912715,
+      "normalized_latency_ms_per_sequence": 57.50129373912715,
+      "stdev_token_latency_ms": 0.48857872382921114,
+      "demand_transfer_experts_per_token": 62.25758015165647,
+      "prefetch_transfer_experts_per_token": 4.809585805478397,
+      "unused_prefetch_experts_per_token": 3.067165956888737,
+      "total_transfer_experts_per_token": 67.06716595713486,
+      "evictions_per_token": 103.537,
+      "prefetch_evictions_per_token": 39.5386,
+      "speedup_vs_baseline": 1.0237278670395693,
+      "latency_reduction_pct": 2.3177904796306725,
+      "additional_traffic_pct_vs_baseline": 4.792446806611824,
+      "dynamic_energy_j": 3.4858566243155256,
+      "dynamic_energy_change_pct_vs_baseline": 3.437806207900117,
+      "total_energy_350w_j": 20.54840074104162,
+      "total_energy_saving_350w_pct": 1.7296916265148667
+    },
+    {
+      "dimension": "overlap_multiplier",
+      "value": 0.5,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3303048387096774,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6588020809701532,
+      "unused_prefetch_rate": 0.6580999816178079,
+      "hbm_hit_rate": 0.0320140625,
+      "exposed_stall_ms_per_token": 47.228945183675954,
+      "expert_load_latency_ms_per_token": 47.228945183675954,
+      "mean_token_latency_ms": 55.98011287500498,
+      "normalized_latency_ms_per_sequence": 55.98011287500498,
+      "stdev_token_latency_ms": 1.4469009765434178,
+      "demand_transfer_experts_per_token": 60.31491769622759,
+      "prefetch_transfer_experts_per_token": 4.795405284739047,
+      "unused_prefetch_experts_per_token": 3.159222980681355,
+      "total_transfer_experts_per_token": 65.11032298096663,
+      "evictions_per_token": 99.5405,
+      "prefetch_evictions_per_token": 37.591,
+      "speedup_vs_baseline": 1.0515462325524498,
+      "latency_reduction_pct": 4.901946386829816,
+      "additional_traffic_pct_vs_baseline": 1.7348796563901479,
+      "dynamic_energy_j": 3.411942010305553,
+      "dynamic_energy_change_pct_vs_baseline": 1.2444958271564641,
+      "total_energy_350w_j": 19.942072824592138,
+      "total_energy_saving_350w_pct": 4.629383533240001
+    },
+    {
+      "dimension": "overlap_multiplier",
       "value": 1.0,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -1101,6 +3515,7 @@
       "dimension": "overlap_multiplier",
       "value": 1.0,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -1140,6 +3555,7 @@
       "dimension": "overlap_multiplier",
       "value": 1.0,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -1177,8 +3593,89 @@
     },
     {
       "dimension": "overlap_multiplier",
+      "value": 1.0,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3622806451612903,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6377193548340602,
+      "unused_prefetch_rate": 0.6377193548387097,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 47.38574299541919,
+      "expert_load_latency_ms_per_token": 47.38574299541919,
+      "mean_token_latency_ms": 56.13691068668371,
+      "normalized_latency_ms_per_sequence": 56.13691068668371,
+      "stdev_token_latency_ms": 0.9771574478047835,
+      "demand_transfer_experts_per_token": 60.51516030318471,
+      "prefetch_transfer_experts_per_token": 9.619171610956794,
+      "unused_prefetch_experts_per_token": 6.134331913777474,
+      "total_transfer_experts_per_token": 70.1343319141415,
+      "evictions_per_token": 103.537,
+      "prefetch_evictions_per_token": 39.5386,
+      "speedup_vs_baseline": 1.048609124932412,
+      "latency_reduction_pct": 4.635580959258304,
+      "additional_traffic_pct_vs_baseline": 9.584893614370147,
+      "dynamic_energy_j": 3.6017107784697857,
+      "dynamic_energy_change_pct_vs_baseline": 6.875612416622669,
+      "total_energy_350w_j": 20.186720826866505,
+      "total_energy_saving_350w_pct": 3.4593832529534465
+    },
+    {
+      "dimension": "overlap_multiplier",
+      "value": 1.0,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3303048387096774,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6588020809701532,
+      "unused_prefetch_rate": 0.6580999816178079,
+      "hbm_hit_rate": 0.0320140625,
+      "exposed_stall_ms_per_token": 45.94775029366121,
+      "expert_load_latency_ms_per_token": 45.94775029366121,
+      "mean_token_latency_ms": 54.69891798493471,
+      "normalized_latency_ms_per_sequence": 54.69891798493471,
+      "stdev_token_latency_ms": 1.7723604181046029,
+      "demand_transfer_experts_per_token": 58.6787353922602,
+      "prefetch_transfer_experts_per_token": 9.590810569478094,
+      "unused_prefetch_experts_per_token": 6.31844596136271,
+      "total_transfer_experts_per_token": 68.2695459617383,
+      "evictions_per_token": 99.5405,
+      "prefetch_evictions_per_token": 37.591,
+      "speedup_vs_baseline": 1.0761762564989912,
+      "latency_reduction_pct": 7.078418245985764,
+      "additional_traffic_pct_vs_baseline": 6.671165563779378,
+      "dynamic_energy_j": 3.531273377226175,
+      "dynamic_energy_change_pct_vs_baseline": 4.785483347973621,
+      "total_energy_350w_j": 19.612985980007597,
+      "total_energy_saving_350w_pct": 6.203202639969215
+    },
+    {
+      "dimension": "overlap_multiplier",
       "value": 2.0,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -1218,6 +3715,7 @@
       "dimension": "overlap_multiplier",
       "value": 2.0,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -1257,6 +3755,7 @@
       "dimension": "overlap_multiplier",
       "value": 2.0,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -1294,8 +3793,89 @@
     },
     {
       "dimension": "overlap_multiplier",
+      "value": 2.0,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3622806451612903,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6377193548340602,
+      "unused_prefetch_rate": 0.6377193548387097,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 44.656976890484515,
+      "expert_load_latency_ms_per_token": 44.656976890484515,
+      "mean_token_latency_ms": 53.40814458179594,
+      "normalized_latency_ms_per_sequence": 53.40814458179594,
+      "stdev_token_latency_ms": 1.954314895747668,
+      "demand_transfer_experts_per_token": 57.03032060609774,
+      "prefetch_transfer_experts_per_token": 19.23834322191359,
+      "unused_prefetch_experts_per_token": 12.268663827554947,
+      "total_transfer_experts_per_token": 76.26866382801134,
+      "evictions_per_token": 103.537,
+      "prefetch_evictions_per_token": 39.5386,
+      "speedup_vs_baseline": 1.1021853923687255,
+      "latency_reduction_pct": 9.271161918515098,
+      "additional_traffic_pct_vs_baseline": 19.16978722966267,
+      "dynamic_energy_j": 3.833419086772888,
+      "dynamic_energy_change_pct_vs_baseline": 13.751224833907003,
+      "total_energy_350w_j": 19.463360998442468,
+      "total_energy_saving_350w_pct": 6.9187665061836
+    },
+    {
+      "dimension": "overlap_multiplier",
+      "value": 2.0,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3303048387096774,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6588020809701532,
+      "unused_prefetch_rate": 0.6580999816178079,
+      "hbm_hit_rate": 0.0320140625,
+      "exposed_stall_ms_per_token": 43.385360513477565,
+      "expert_load_latency_ms_per_token": 43.385360513477565,
+      "mean_token_latency_ms": 52.13652820479306,
+      "normalized_latency_ms_per_sequence": 52.13652820479306,
+      "stdev_token_latency_ms": 2.583040282402471,
+      "demand_transfer_experts_per_token": 55.40637078423648,
+      "prefetch_transfer_experts_per_token": 19.18162113895619,
+      "unused_prefetch_experts_per_token": 12.63689192272542,
+      "total_transfer_experts_per_token": 74.58799192319266,
+      "evictions_per_token": 99.5405,
+      "prefetch_evictions_per_token": 37.591,
+      "speedup_vs_baseline": 1.1290678305303936,
+      "latency_reduction_pct": 11.431361964299558,
+      "additional_traffic_pct_vs_baseline": 16.54373737841888,
+      "dynamic_energy_j": 3.76993611106406,
+      "dynamic_energy_change_pct_vs_baseline": 11.867458389508283,
+      "total_energy_350w_j": 18.95481229078121,
+      "total_energy_saving_350w_pct": 9.3508408537017
+    },
+    {
+      "dimension": "overlap_multiplier",
       "value": 4.0,
       "scenario": "baseline_lru",
+      "predictor": "none",
       "prediction_enabled": false,
       "prefetch_enabled": false,
       "eviction_policy": "lru",
@@ -1335,6 +3915,7 @@
       "dimension": "overlap_multiplier",
       "value": 4.0,
       "scenario": "prefetch_lru",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "lru",
@@ -1374,6 +3955,7 @@
       "dimension": "overlap_multiplier",
       "value": 4.0,
       "scenario": "complete_car",
+      "predictor": "cct",
       "prediction_enabled": true,
       "prefetch_enabled": true,
       "eviction_policy": "car",
@@ -1408,6 +3990,86 @@
       "dynamic_energy_change_pct_vs_baseline": 23.451938282488143,
       "total_energy_350w_j": 17.087094030337838,
       "total_energy_saving_350w_pct": 18.282983638028934
+    },
+    {
+      "dimension": "overlap_multiplier",
+      "value": 4.0,
+      "scenario": "adaptive_prefetch_lru",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "lru",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3622806451612903,
+      "timely_prefetch_rate": 0.0,
+      "late_prefetch_rate": 1.0,
+      "unused_prefetch_traffic_rate": 0.6377193548340602,
+      "unused_prefetch_rate": 0.6377193548387097,
+      "hbm_hit_rate": 0.0,
+      "exposed_stall_ms_per_token": 39.19944468065318,
+      "expert_load_latency_ms_per_token": 39.19944468065318,
+      "mean_token_latency_ms": 47.95061237202242,
+      "normalized_latency_ms_per_sequence": 47.95061237202242,
+      "stdev_token_latency_ms": 3.9086297915192447,
+      "demand_transfer_experts_per_token": 50.06064121222132,
+      "prefetch_transfer_experts_per_token": 38.47668644382718,
+      "unused_prefetch_experts_per_token": 24.537327655109895,
+      "total_transfer_experts_per_token": 88.5373276560485,
+      "evictions_per_token": 103.537,
+      "prefetch_evictions_per_token": 39.5386,
+      "speedup_vs_baseline": 1.227631387371364,
+      "latency_reduction_pct": 18.542323837025233,
+      "additional_traffic_pct_vs_baseline": 38.33957446071255,
+      "dynamic_energy_j": 4.296835703390329,
+      "dynamic_energy_change_pct_vs_baseline": 27.502449668809078,
+      "total_energy_350w_j": 18.016641341618943,
+      "total_energy_saving_350w_pct": 13.837533012526501
+    },
+    {
+      "dimension": "overlap_multiplier",
+      "value": 4.0,
+      "scenario": "adaptive_complete_car",
+      "predictor": "adaptive_ht_cct",
+      "prediction_enabled": true,
+      "prefetch_enabled": true,
+      "eviction_policy": "car",
+      "tokens": 10000,
+      "routing_batch_size": 1,
+      "routing_tokens": 10000,
+      "hbm_capacity_experts": 16,
+      "hbm_capacity_mib": 5376.703523432099,
+      "prediction_precision": 0.3622806451612903,
+      "prediction_recall": 0.3622806451612903,
+      "prefetch_coverage": 0.3303048387096774,
+      "timely_prefetch_rate": 0.07953063885267275,
+      "late_prefetch_rate": 0.9204693611473272,
+      "unused_prefetch_traffic_rate": 0.6585444138470999,
+      "unused_prefetch_rate": 0.6580999816178079,
+      "hbm_hit_rate": 0.056434375,
+      "exposed_stall_ms_per_token": 38.55574412696261,
+      "expert_load_latency_ms_per_token": 38.55574412696261,
+      "mean_token_latency_ms": 47.306911818308656,
+      "normalized_latency_ms_per_sequence": 47.306911818308656,
+      "stdev_token_latency_ms": 4.275669181239557,
+      "demand_transfer_experts_per_token": 49.23858715681712,
+      "prefetch_transfer_experts_per_token": 37.230355453330496,
+      "unused_prefetch_experts_per_token": 24.517842609332707,
+      "total_transfer_experts_per_token": 86.46894261014761,
+      "evictions_per_token": 99.5405,
+      "prefetch_evictions_per_token": 37.591,
+      "speedup_vs_baseline": 1.244335648407095,
+      "latency_reduction_pct": 19.635831274292855,
+      "additional_traffic_pct_vs_baseline": 35.107722826535934,
+      "dynamic_energy_j": 4.218707880078142,
+      "dynamic_energy_change_pct_vs_baseline": 25.184118332161557,
+      "total_energy_350w_j": 17.713218324515054,
+      "total_energy_saving_350w_pct": 15.28861788449211
     }
   ]
 }

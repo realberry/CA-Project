@@ -23,16 +23,16 @@ main mid-semester and end-semester results without rerunning a long experiment.
    adjacent-layer correlation on real Mixtral routes. The first 50,000 tokens
    profile the training-free tables and the next 50,000 are held out.
 3. **Component contribution:**
-   `results/final_endsem/hbm_policies/hbm_policy_comparison.png` compares
-   on-demand LRU, prediction alone, CCT prefetch with LRU, and the complete CCT
-   prefetch plus correlation-aware retention design.
+   `results/final_endsem/hbm_policies/hbm_policy_comparison.svg` compares
+   on-demand LRU, prediction alone, CCT prefetch, and adaptive HT-CCT prefetch
+   under both LRU and correlation-aware retention.
 4. **When prefetching helps:**
-   `results/final_endsem/sensitivity/endsem_sensitivity.png` varies HBM capacity,
-   candidate budget, and overlap. The realistic one-layer window produces
-   partial/late prefetches; longer windows produce timely completions but can
-   increase unused traffic.
+   `results/final_endsem/sensitivity/endsem_sensitivity.svg` varies HBM capacity,
+   candidate budget, and overlap for both predictors. The realistic one-layer
+   window produces partial/late prefetches; longer windows produce timely
+   completions but can increase unused traffic.
 5. **Batch and context:**
-   `results/final_endsem/batch_context_prefetch/batch_context_prefetch.png`
+   `results/final_endsem/batch_context_prefetch/batch_context_prefetch.svg`
    combines nine matching LLMSimulator calibrations with real routing traffic.
 
 The energy trade-off is shown separately in
@@ -42,11 +42,11 @@ The energy trade-off is shown separately in
 
 | Deliverable | Implementation | Main evidence |
 |---|---|---|
-| Training-free prediction | CCT, previous-token history, static and hybrid predictors | `scripts/simulate_prefetch.py`, `results/day3/summary.json` |
+| Training-free prediction | CCT plus a causal per-layer exponential-decay HT-CCT ensemble | `scripts/evaluate_hbm_policies.py`, primary result JSON |
 | Predictor-driven prefetch | Next-layer issue during current expert execution | `scripts/evaluate_hbm_policies.py` |
 | Effectiveness metrics | Coverage, timely/late/unused, HBM hits, traffic, stalls and latency | `results/final_endsem/hbm_policies/hbm_policy_summary.csv` |
 | HBM management | Standard LRU versus correlation-aware retention (CAR) | HBM policy comparison plot and CSV |
-| Component ablation | Baseline, prediction only, prefetch+LRU, complete CAR | HBM policy comparison plot and CSV |
+| Component ablation | Baseline, CCT/adaptive prediction only, prefetch+LRU, and complete CAR | HBM policy comparison plot and CSV |
 | Sensitivity | Capacity, candidate budget, overlap, batch and context | `results/final_endsem/sensitivity/`, `batch_context_prefetch/` |
 | Energy | Measured dynamic energy plus stalled-GPU-power sensitivity | Energy CSV and plot |
 | Real routing traffic | AllenAI Mixtral trace drives predictor and HBM events | Trace hash in result JSON files |
