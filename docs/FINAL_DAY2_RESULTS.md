@@ -1,4 +1,9 @@
-# Final-project Day 2 results
+# Initial final-stage Day 2 results (superseded primary design)
+
+This document records the initial next-layer-buffer experiment. The later
+persistent-HBM evaluation adds the required LRU comparison, correlation-aware
+eviction, complete effectiveness metrics, and batch/context sensitivity. Use
+`docs/DEMO_GUIDE.md` and `results/final_endsem/` for the final primary results.
 
 ## Final simulation configuration
 

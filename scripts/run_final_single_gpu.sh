@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SIM_ROOT="${SIM_ROOT:-/home/verso/ca-assignment/Project/SSD-offloading/LLMSimulator}"
-SUBMISSION_ROOT="${SUBMISSION_ROOT:-/home/verso/ca-assignment/Project/final-prefetch}"
+SCRIPT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SIM_ROOT="${SIM_ROOT:-$HOME/ca-assignment/Project/SSD-offloading/LLMSimulator}"
+SUBMISSION_ROOT="${SUBMISSION_ROOT:-$SCRIPT_ROOT}"
 CONFIG_ROOT="$SUBMISSION_ROOT/configs/final_day2_single_gpu_batch1"
 RESULT_ROOT="$SIM_ROOT/results/final_day2/single_gpu_batch1"
 

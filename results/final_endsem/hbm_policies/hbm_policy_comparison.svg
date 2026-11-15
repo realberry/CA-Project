@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<rect width="100%" height="100%" fill="#fff"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#17233c}.title{font-size:25px;font-weight:700}.sub{font-size:14px;fill:#596579}.label{font-size:15px;font-weight:600}.value{font-size:14px;font-weight:700}.tick{font-size:12px;fill:#6b7280}</style>
+<text x="32" y="42" class="title">Component ablation: prediction, prefetch, and HBM management</text>
+<text x="32" y="68" class="sub">Held-out Mixtral routing · measured-calibrated single-GPU latency · persistent expert cache</text>
+<line x1="215.0" y1="90" x2="215.0" y2="355" stroke="#e2e7ef"/>
+<text x="215.0" y="380" text-anchor="middle" class="tick">0</text>
+<line x1="322.0" y1="90" x2="322.0" y2="355" stroke="#e2e7ef"/>
+<text x="322.0" y="380" text-anchor="middle" class="tick">10</text>
+<line x1="428.9" y1="90" x2="428.9" y2="355" stroke="#e2e7ef"/>
+<text x="428.9" y="380" text-anchor="middle" class="tick">20</text>
+<line x1="535.9" y1="90" x2="535.9" y2="355" stroke="#e2e7ef"/>
+<text x="535.9" y="380" text-anchor="middle" class="tick">30</text>
+<line x1="642.8" y1="90" x2="642.8" y2="355" stroke="#e2e7ef"/>
+<text x="642.8" y="380" text-anchor="middle" class="tick">40</text>
+<line x1="749.8" y1="90" x2="749.8" y2="355" stroke="#e2e7ef"/>
+<text x="749.8" y="380" text-anchor="middle" class="tick">50</text>
+<line x1="856.8" y1="90" x2="856.8" y2="355" stroke="#e2e7ef"/>
+<text x="856.8" y="380" text-anchor="middle" class="tick">60</text>
+<text x="201" y="137" text-anchor="end" class="label">On demand + LRU</text>
+<rect x="215" y="112" width="629.6" height="38" rx="5" fill="#e45756"/>
+<text x="853.6" y="137" class="value">58.866 ms · 1.000×</text>
+<text x="201" y="199" text-anchor="end" class="label">Prediction only</text>
+<rect x="215" y="174" width="629.6" height="38" rx="5" fill="#9aa4b2"/>
+<text x="853.6" y="199" class="value">58.866 ms · 1.000×</text>
+<text x="201" y="261" text-anchor="end" class="label">CCT prefetch + LRU</text>
+<rect x="215" y="236" width="596.2" height="38" rx="5" fill="#2f6fed"/>
+<text x="820.2" y="261" class="value">55.737 ms · 1.056×</text>
+<text x="201" y="323" text-anchor="end" class="label">CCT prefetch + CAR</text>
+<rect x="215" y="298" width="575.4" height="38" rx="5" fill="#13a89e"/>
+<text x="799.4" y="323" class="value">53.798 ms · 1.094×</text>
+<text x="555.0" y="414" text-anchor="middle" class="sub">Mean modeled token latency (ms)</text>
+<text x="32" y="458" class="sub">Complete design: 4.68% HBM hit rate · 0.00% timely among issued-correct prefetches · 4.91% traffic change.</text>
+</svg>

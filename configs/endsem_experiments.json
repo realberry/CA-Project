@@ -1,0 +1,19 @@
+{
+  "base_prefetch_config": "configs/final_prefetch_single_gpu_batch1.json",
+  "primary": {
+    "hbm_capacity_experts": 16,
+    "candidate_budget": 2,
+    "overlap_multiplier": 1.0,
+    "evaluation_tokens": 50000
+  },
+  "sensitivity": {
+    "evaluation_tokens": 10000,
+    "hbm_capacity_experts": [8, 16, 32],
+    "candidate_budget": [1, 2, 4],
+    "overlap_multiplier": [0.5, 1.0, 2.0, 4.0]
+  },
+  "hardware_matrix": {
+    "batch_sizes": [1, 4, 8],
+    "context_lengths": [512, 1024, 2048]
+  }
+}

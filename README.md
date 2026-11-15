@@ -10,31 +10,32 @@ unsharded experts, and a 450 GB/s CPU-DRAM-to-HBM link. Expert loading takes
 50.115 ms, compared with 7.775 ms of off-chip-case expert execution, producing
 a 58.866 ms no-prefetch decoder step.
 
-The selected training-free design uses a cross-layer correlation table (CCT)
-and one 336 MiB next-layer HBM buffer slot. On 50,000 held-out Mixtral routing
-tokens, it reduces exposed expert-loading stalls to 46.541 ms and total modeled
-decoder latency to 55.292 ms: a 1.065× speedup with 8.38% additional transfer
-traffic. Prediction statistics use a disjoint 50,000-token profile split.
+The complete training-free design combines a cross-layer correlation table
+(CCT), next-layer prefetch, a persistent 16-expert HBM cache, and
+correlation-aware retention (CAR). On 50,000 held-out Mixtral routing tokens,
+it reduces exposed stalls from 50.115 ms to 45.047 ms and modeled token latency
+from 58.866 ms to 53.798 ms: a 1.094× speedup. It produces a 4.68% HBM hit rate
+with 4.91% additional traffic. Prediction statistics use a disjoint
+50,000-token profile split.
 
-Dynamic energy increases by 6.01% because incorrect prefetches move additional
-bytes. When stalled-GPU power is included, the design breaks even at 56.7 W;
-at the explicitly labeled 350 W sensitivity point it saves 5.01% total energy.
-This is a simulation result, not a physical-GPU measurement.
+Dynamic energy increases by 3.52% because inaccurate prefetches add traffic.
+When an explicitly labeled 350 W stalled-GPU sensitivity is included, avoided
+stall time gives a 7.92% total-energy saving. This is a simulation result, not
+a physical-GPU measurement.
 
 ### Final-result reproduction
 
 ```bash
 bash scripts/fetch_mixtral_trace.sh
-python3 scripts/analyze_single_gpu.py
-python3 scripts/simulate_prefetch.py \
-  --config configs/final_prefetch_single_gpu_batch1.json
-python3 scripts/analyze_prefetch_sensitivity.py \
-  --config configs/final_prefetch_single_gpu_batch1.json
+python3 scripts/demo.py check
+python3 scripts/demo.py summary
+python3 scripts/demo.py run primary
 ```
 
-The complete final method, tables, energy boundary, and VM commands are in
-`docs/FINAL_DAY2_RESULTS.md`. Historical sections below retain the original
-mid-evaluation methodology and evidence.
+The concise presentation sequence is in `docs/DEMO_GUIDE.md`; final tables and
+interpretation are summarized in `docs/ENDSEM_RESULTS.md`, with machine-readable
+outputs under `results/final_endsem/`. Historical sections below retain the
+original mid-evaluation methodology and evidence.
 
 ## Artifact contents and exclusions
 
@@ -106,10 +107,10 @@ physical GPU is required.
 | Analyze temporal and spatial expert correlation | Analyzed 100,000 real Mixtral routes with separate 50,000-token profile and evaluation sets. | `docs/DAY3_NOTES.md`, Day 3 plot |
 
 All four items listed for the mid evaluation have supporting artifacts. The
-final-stage predictor, bounded next-layer prefetch buffer, stall accounting,
-traffic overhead, energy sensitivity, and single-GPU calibration are under
-`configs/final_*`, `scripts/*prefetch*`, `results/final_day*`, and
-`docs/FINAL_DAY2_RESULTS.md`.
+final-stage predictor, persistent HBM cache, LRU/CAR comparison, stall
+accounting, traffic, energy and batch/context sensitivity are under
+`configs/endsem_experiments.json`, `scripts/evaluate_hbm_policies.py`, and
+`results/final_endsem/`.
 
 ## 3. Software and experiment provenance
 
@@ -690,7 +691,8 @@ CA-Project/
     ├── day2/                       # Historical off-chip calibration CSVs
     ├── day3/                       # Routing metrics and generated plot
     ├── final_day1/                 # Predictor-policy comparison
-    └── final_day2/                 # Final calibration, plots, and sensitivity
+    ├── final_day2/                 # Initial measured-calibrated prefetch stage
+    └── final_endsem/               # HBM policies, ablations and sensitivity
 ```
 
 `data/day3/` appears only after running `scripts/fetch_mixtral_trace.sh` and is
@@ -703,13 +705,20 @@ workload dataset is stored in this repository.
    Ramulator memory timing.
 2. The final one-GPU, batch-1 calibration confirms the memory wall: 50.115 ms
    of expert loading versus 7.775 ms of expert execution.
-3. CCT provides the strongest fixed top-2 predictor, but a one-candidate
-   prefetch policy is faster under the measured overlap budget because it does
-   not divide limited link progress across several candidates.
-4. The selected one-slot CCT policy reduces total modeled latency from 58.866
-   ms to 55.292 ms and exposed stalls by 7.13%, with 8.38% extra traffic.
-5. Prefetching increases dynamic energy. Total energy falls only when the power
-   consumed during avoided stalls exceeds the measured 56.7 W break-even point.
+3. The held-out CCT predictor achieves 41.53% recall and precision at batch 1.
+   Prediction alone does not change latency; issuing transfers early is what
+   reduces exposed stalls.
+4. CCT prefetch with LRU reaches 55.737 ms. Adding CAR raises the HBM hit rate
+   to 4.68% and reduces latency further to 53.798 ms, a 1.094× speedup over
+   on-demand LRU with 4.91% additional traffic.
+5. The primary one-layer overlap produces partial, late prefetches. Longer
+   overlap increases timely completions and speedup, but also increases unused
+   traffic. This boundary is reported rather than assuming unlimited overlap.
+6. Across the measured matrix, the complete design gives about 1.094× speedup
+   at batch 1, 1.093× at batch 4, and 1.123× at batch 8. Context length from
+   512 to 2,048 tokens has only a small effect in this simulator.
+7. Dynamic energy rises 3.52% in the primary design. With the explicitly
+   labeled 350 W stalled-power sensitivity, total energy falls 7.92%.
 
 ## 10. Final scope and limitations
 
@@ -723,8 +732,9 @@ workload dataset is stored in this repository.
   Longer windows are sensitivity results and are not treated as available work.
 - Stalled-GPU power is reported as a sensitivity instead of assuming one fixed
   physical value.
-- The final single-GPU hardware calibration contains seven matched synthetic
-  decode samples; predictor evaluation contains 50,000 held-out real routes.
+- Each of the nine batch/context hardware points contains seven matched
+  simulator samples; the primary predictor/cache evaluation contains 50,000
+  held-out real routes.
 
 ## 11. References and local papers
 
