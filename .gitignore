@@ -1,6 +1,15 @@
 __pycache__/
 *.py[cod]
 .venv/
+.idea/
+.vscode/
+.DS_Store
+build/
+CMakeFiles/
+*.o
+*.obj
+*.exe
+*.log
 .ssh_agent/
 results/ssh_diag/
 mid_submission/zip_staging/
@@ -9,3 +18,4 @@ mid_submission/report_template/*.docx
 mid_submission/report_template/*.pdf
 *.tmp
 *.part.tmp
+data/day3/c4_results.first24MiB.jsonl.part

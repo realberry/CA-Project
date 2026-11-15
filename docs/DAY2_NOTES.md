@@ -39,7 +39,9 @@ The output filename contains `TP4` because the patched evaluator names files usi
 2. `offchip_compute`: CPU-memory expert offload enabled, GPU compute collection. The simulator reduces available HBM bandwidth by the concurrent 450 GB/s offload bandwidth.
 3. `offchip_load`: CPU-memory expert offload enabled, weight-copy collection. The `expert_ffn` field gives selected expert-weight transfer latency.
 
-All three runs completed successfully. Their exact configurations, logs, status files, and raw CSVs are under `results/day2/`.
+All three runs completed successfully. Their exact configurations, status
+files, and compact raw CSVs are under `results/day2/`. Large console logs were
+excluded from the final artifact.
 
 ## Results
 

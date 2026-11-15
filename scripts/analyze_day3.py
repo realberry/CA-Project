@@ -236,7 +236,10 @@ def write_svg(rows, summary):
 
 def main():
     if not TRACE.exists():
-        raise SystemExit(f"Missing trace: {TRACE}")
+        raise SystemExit(
+            f"Missing trace: {TRACE}\n"
+            "Run scripts/fetch_mixtral_trace.sh from Linux/WSL, then retry."
+        )
     OUT.mkdir(parents=True, exist_ok=True)
     cct, target_freq = build_profile()
     rows, evaluated = evaluate(cct, target_freq)

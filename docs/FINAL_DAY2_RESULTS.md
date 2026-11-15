@@ -106,7 +106,7 @@ Run the three LLMSimulator configurations inside the VM:
 
 ```bash
 chmod +x scripts/run_final_single_gpu.sh
-SIM_ROOT=/home/verso/ca-assignment/Project/SSD-offloading/LLMSimulator \
+SIM_ROOT="$HOME/ca-assignment/Project/SSD-offloading/LLMSimulator" \
 SUBMISSION_ROOT="$PWD" \
 bash scripts/run_final_single_gpu.sh
 ```
@@ -114,6 +114,7 @@ bash scripts/run_final_single_gpu.sh
 Regenerate the calibration and trace-driven results from the repository root:
 
 ```bash
+bash scripts/fetch_mixtral_trace.sh
 python3 scripts/analyze_single_gpu.py
 python3 scripts/simulate_prefetch.py \
   --config configs/final_prefetch_single_gpu_batch1.json

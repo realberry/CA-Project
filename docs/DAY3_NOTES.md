@@ -97,10 +97,12 @@ application domains.
 - `results/day3/day3_correlation.png`: rendered plot
 - `results/day3/layer_metrics.csv`: all layer-level measurements
 - `results/day3/summary.json`: aggregate results and trace hashes
-- `data/day3/c4_results.first24MiB.jsonl.part`: downloaded trace range
+- `scripts/fetch_mixtral_trace.sh`: downloads and verifies the required trace
+  range; the 24 MiB trace itself is intentionally not stored in the artifact
 
-Run locally with no third-party Python packages:
+Fetch the external trace and run locally with no third-party Python packages:
 
-```powershell
-python Project\scripts\analyze_day3.py
+```bash
+bash scripts/fetch_mixtral_trace.sh
+python3 scripts/analyze_day3.py
 ```

@@ -19,6 +19,10 @@ run_case() {
   local name="$1"
   local config="$2"
   cp "$CONFIG_ROOT/$config" "$SIM_ROOT/config.yaml"
+  # Keep the submitted, tested YAML intact while making its output location
+  # portable across Linux usernames and simulator checkout locations.
+  sed -i "s|^  output_directory:.*|  output_directory: $RESULT_ROOT/raw|" \
+    "$SIM_ROOT/config.yaml"
   (
     cd "$SIM_ROOT"
     ./build/run > "$RESULT_ROOT/$name.log" 2>&1

@@ -24,6 +24,7 @@ This is a simulation result, not a physical-GPU measurement.
 ### Final-result reproduction
 
 ```bash
+bash scripts/fetch_mixtral_trace.sh
 python3 scripts/analyze_single_gpu.py
 python3 scripts/simulate_prefetch.py \
   --config configs/final_prefetch_single_gpu_batch1.json
@@ -34,6 +35,47 @@ python3 scripts/analyze_prefetch_sensitivity.py \
 The complete final method, tables, energy boundary, and VM commands are in
 `docs/FINAL_DAY2_RESULTS.md`. Historical sections below retain the original
 mid-evaluation methodology and evidence.
+
+## Artifact contents and exclusions
+
+This repository is the canonical submission artifact. It intentionally
+contains only the files needed to inspect or reproduce the experiments:
+
+- `scripts/`: simulator run drivers, the trace downloader, result processors,
+  the predictor/prefetch model, and plot generators;
+- `configs/`: exact submitted YAML and JSON configurations;
+- `patches/`: the only required upstream source modification, a one-line
+  Ramulator GCC 13 compatibility patch;
+- `results/`: compact CSV/JSON outputs, generated figures, status markers, and
+  one representative simulator log;
+- `docs/`: method notes, final results, and the architecture diagram.
+
+The upstream LLMSimulator and SSD-offloading repositories are pinned by commit
+below instead of being duplicated here. Compiled executables, build trees,
+object files, caches, large console logs, and the routing dataset are excluded.
+The artifact's Python analysis uses only the Python standard library.
+
+### External routing trace
+
+The analysis requires the deterministic first 25,165,824 bytes of
+`c4_results.jsonl` from AllenAI's
+[`analysis_mixtral`](https://huggingface.co/datasets/allenai/analysis_mixtral)
+dataset. The source URL is:
+
+```text
+https://huggingface.co/datasets/allenai/analysis_mixtral/resolve/main/c4_results.jsonl
+```
+
+Download and verify only the required prefix from Linux or WSL:
+
+```bash
+bash scripts/fetch_mixtral_trace.sh
+```
+
+This creates `data/day3/c4_results.first24MiB.jsonl.part` locally. Its expected
+size is 25,165,824 bytes and its SHA-256 is
+`4cb79ab27c967d008878981859f5883243c5890556fbaf4c85afc60f2797c6fe`.
+The file is ignored by Git and must not be added to the submission ZIP.
 
 ## 1. Project objective
 
@@ -58,10 +100,10 @@ physical GPU is required.
 
 | Required item | Work completed | Main evidence |
 |---|---|---|
-| Reproduce Duplex and demonstrate a working simulation | Built LLMSimulator and ran Mixtral with both GPU and Logic-PIM operations. Also completed a reduced Ramulator-backed run. | `DAY1_NOTES.md`, `results/day1/` |
-| Disable expert sharding and Logic-PIM; store experts off chip | Used the SSD-offloading branch with `processor_type: GPU`, expert tensor degree 1, and expert offload to CPU DRAM. | `DAY2_NOTES.md`, `configs/day2_*.yaml` |
+| Reproduce Duplex and demonstrate a working simulation | Built LLMSimulator and ran Mixtral with both GPU and Logic-PIM operations. Also completed a reduced Ramulator-backed run. | `docs/DAY1_NOTES.md`, `results/day1/` |
+| Disable expert sharding and Logic-PIM; store experts off chip | Used the SSD-offloading branch with `processor_type: GPU`, expert tensor degree 1, and expert offload to CPU DRAM. | `docs/DAY2_NOTES.md`, `configs/day2_*.yaml` |
 | Measure and explain loading versus execution | Measured separate GPU-compute and expert-weight-copy runs and combined matched samples into a no-prefetch critical path. | `results/day2/summary.csv`, Day 2 plot |
-| Analyze temporal and spatial expert correlation | Analyzed 100,000 real Mixtral routes with separate 50,000-token profile and evaluation sets. | `DAY3_NOTES.md`, Day 3 plot |
+| Analyze temporal and spatial expert correlation | Analyzed 100,000 real Mixtral routes with separate 50,000-token profile and evaluation sets. | `docs/DAY3_NOTES.md`, Day 3 plot |
 
 All four items listed for the mid evaluation have supporting artifacts. The
 final-stage predictor, bounded next-layer prefetch buffer, stall accounting,
@@ -313,9 +355,9 @@ git clone https://github.com/realberry/CA-Project.git submission
 export SUBMISSION_ROOT="$HOME/ca-assignment/submission"
 ```
 
-The commands below assume that the submitted `README.md`, `configs/`,
-`scripts/`, `patches/`, `results/`, and `data/` directories are directly under
-`$SUBMISSION_ROOT`.
+The commands below assume that `README.md`, `configs/`, `scripts/`, `patches/`,
+`results/`, and `docs/` are directly under `$SUBMISSION_ROOT`. The ignored
+`data/day3/` directory is created by the trace-download script when needed.
 
 ### 7.3 Build the Day 1 LLMSimulator/Duplex baseline
 
@@ -407,9 +449,9 @@ cat ~/ca-assignment/Project/day1/duplex-smoke.status
 cat ~/ca-assignment/Project/day1/duplex-ramulator-smoke.status
 ```
 
-The analytical and Ramulator-backed logs should contain both GPU-tagged and
-Logic-tagged operations. Copies of the verified outputs are under
-`results/day1/` in the submission.
+The analytical and Ramulator-backed runs should contain both GPU-tagged and
+Logic-tagged operations. Compact status markers and simulator CSVs are under
+`results/day1/`; the multi-megabyte console logs are intentionally excluded.
 
 ### 7.5 Build the Day 2 SSD-offloading simulator
 
@@ -455,7 +497,36 @@ cmake ..
 make -j"$(nproc)"
 ```
 
-### 7.6 Install and run the Day 2 configurations
+### 7.6 Run the final single-GPU calibration
+
+The final driver installs the three one-GPU, batch-1 configurations, preserves
+the simulator's original `config.yaml`, and runs the resident baseline,
+off-chip compute, and off-chip weight-copy cases:
+
+```bash
+export SSD_SIM="$HOME/ca-assignment/Project/SSD-offloading/LLMSimulator"
+cd "$SUBMISSION_ROOT"
+SIM_ROOT="$SSD_SIM" SUBMISSION_ROOT="$SUBMISSION_ROOT" \
+  bash scripts/run_final_single_gpu.sh
+```
+
+The run finishes only after creating
+`$SSD_SIM/results/final_day2/single_gpu_batch1/SUCCESS`. Copy the three compact
+CSV outputs into the artifact tree before regenerating the processed results:
+
+```bash
+mkdir -p "$SUBMISSION_ROOT/results/final_day2/single_gpu_batch1/raw"
+cp "$SSD_SIM/results/final_day2/single_gpu_batch1/raw/"*.csv \
+  "$SUBMISSION_ROOT/results/final_day2/single_gpu_batch1/raw/"
+cd "$SUBMISSION_ROOT"
+python3 scripts/analyze_single_gpu.py
+```
+
+The representative submitted execution log is
+`results/final_day2/single_gpu_batch1/offchip_load.log`. The other console logs
+are reproducible but deliberately omitted.
+
+### 7.7 Install and run the historical Day 2 configurations
 
 The submitted driver uses the exact tested path
 `/home/verso/ca-assignment/Project/SSD-offloading/LLMSimulator`. If the Linux
@@ -491,7 +562,7 @@ Expected raw outputs are one GPU-resident compute CSV, one CPU-memory/GPU-comput
 CSV, and one CPU-memory expert-weight-copy CSV. The submitted copies are under
 `results/day2/raw/`.
 
-### 7.7 Regenerate the Day 2 tables and plot
+### 7.8 Regenerate the historical Day 2 tables and plot
 
 Copy fresh raw CSVs into the submission tree if the simulation was rerun:
 
@@ -518,16 +589,18 @@ The expected aggregate values are approximately 48.774 ms expert loading,
 7.570 ms off-chip-case expert execution, and 56.344 ms for the no-prefetch
 expert path.
 
-### 7.8 Regenerate the Day 3 correlation results
+### 7.9 Fetch the trace and regenerate routing/prefetch results
 
-The submission already contains the deterministic 24 MiB range of AllenAI's
-Mixtral routing trace at:
+The routing trace is external and is not stored in the repository. Fetch and
+verify the required deterministic 24 MiB prefix:
 
-```text
-data/day3/c4_results.first24MiB.jsonl.part
+```bash
+cd "$SUBMISSION_ROOT"
+bash scripts/fetch_mixtral_trace.sh
 ```
 
-Its SHA-256 digest is:
+The script creates `data/day3/c4_results.first24MiB.jsonl.part` and verifies
+this SHA-256 digest:
 
 ```text
 4cb79ab27c967d008878981859f5883243c5890556fbaf4c85afc60f2797c6fe
@@ -538,6 +611,10 @@ Run:
 ```bash
 cd "$SUBMISSION_ROOT"
 python3 scripts/analyze_day3.py
+python3 scripts/simulate_prefetch.py \
+  --config configs/final_prefetch_single_gpu_batch1.json
+python3 scripts/analyze_prefetch_sensitivity.py \
+  --config configs/final_prefetch_single_gpu_batch1.json
 ```
 
 Expected outputs:
@@ -551,29 +628,39 @@ results/day3/day3_correlation.svg
 The expected aggregate results are 36.2% previous-token recall and 41.5%
 fixed-budget CCT recall, both evaluated on the held-out 50,000-token half.
 
-### 7.9 Reproduce only the submitted processed results
+### 7.10 Reproduce only the submitted processed results
 
 The slow simulator runs are unnecessary if the goal is only to verify the
 submitted analysis. After cloning the group repository, run:
 
 ```bash
 cd "$SUBMISSION_ROOT"
+bash scripts/fetch_mixtral_trace.sh
 python3 scripts/analyze_day2.py
 python3 scripts/analyze_day3.py
+python3 scripts/analyze_single_gpu.py
+python3 scripts/simulate_prefetch.py \
+  --config configs/final_prefetch_single_gpu_batch1.json
+python3 scripts/analyze_prefetch_sensitivity.py \
+  --config configs/final_prefetch_single_gpu_batch1.json
 ```
 
-Both scripts read the submitted raw data and overwrite only their derived
-CSV/JSON/SVG outputs.
+These scripts read the compact submitted simulator CSVs plus the downloaded
+trace and overwrite only derived CSV/JSON/SVG outputs.
 
 On Windows PowerShell, the equivalent commands are:
 
 ```powershell
 cd <path-to-cloned-repository>
 python scripts\analyze_day2.py
+## First run `bash scripts/fetch_mixtral_trace.sh` from WSL.
 python scripts\analyze_day3.py
+python scripts\analyze_single_gpu.py
+python scripts\simulate_prefetch.py --config configs\final_prefetch_single_gpu_batch1.json
+python scripts\analyze_prefetch_sensitivity.py --config configs\final_prefetch_single_gpu_batch1.json
 ```
 
-### 7.10 Troubleshooting
+### 7.11 Troubleshooting
 
 - **`uint64_t` build errors in Ramulator:** apply
   `patches/ramulator2-gcc13-cstdint.patch` once. Do not apply it repeatedly.
@@ -592,25 +679,23 @@ python scripts\analyze_day3.py
 ## 8. Repository layout
 
 ```text
-Project/
-├── PROJECT_README.md               # This complete mid-project description
-├── DAY1_NOTES.md                   # Duplex build and reproduction evidence
-├── DAY2_NOTES.md                   # Off-chip architecture and latency analysis
-├── DAY3_NOTES.md                   # Real-route correlation methodology
-├── configs/                        # Exact YAML configurations
-├── data/day3/                      # Saved official routing-trace range
-├── patches/                        # Ramulator GCC compatibility patch
-├── scripts/                        # VM drivers and local analysis scripts
-├── results/day1/                   # Build, logs, status, and simulator output
-├── results/day2/                   # Raw latency CSVs, summary, and plot
-├── results/day3/                   # Correlation metrics and plot
-├── results/final_day1/             # Initial predictor/prefetch comparison
-├── results/final_day2/             # Single-GPU runs, sensitivity, and energy
-├── configs/final_day2_single_gpu_batch1/
-│                                     # Final LLMSimulator configurations
-└── mid_submission/
-    └── presentation_assets/        # Curated files for making presentation slides
+CA-Project/
+├── README.md                       # Complete setup, build, and run guide
+├── configs/                        # Exact simulator/prefetch configurations
+├── docs/                           # Method notes, results, and architecture figure
+├── patches/                        # Required upstream compatibility patch
+├── scripts/                        # Run, download, analysis, and plotting code
+└── results/
+    ├── day1/                       # Compact Duplex verification outputs
+    ├── day2/                       # Historical off-chip calibration CSVs
+    ├── day3/                       # Routing metrics and generated plot
+    ├── final_day1/                 # Predictor-policy comparison
+    └── final_day2/                 # Final calibration, plots, and sensitivity
 ```
+
+`data/day3/` appears only after running `scripts/fetch_mixtral_trace.sh` and is
+ignored by Git. No simulator checkout, build directory, executable, or complete
+workload dataset is stored in this repository.
 
 ## 9. Final-evaluation conclusions
 
